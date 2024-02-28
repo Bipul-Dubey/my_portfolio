@@ -6,6 +6,12 @@ import PersonalLogo from "./logo";
 import { LinkButton, StyledHorizontalLine } from "./commonComponents";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { BsPhoneVibrate } from "react-icons/bs";
+import {
+  handleOpenLink,
+  handleOpenMailbox,
+  handlePhoneCall,
+} from "@/common/utils";
+import { EMAIL, GITHUB, LINKEDIN, PHONE } from "@/common/constant";
 
 const StyledMainLeftBar = styled("div")(({ isMenuOpen = false }) => ({
   backgroundColor: "rgba(173, 173, 173, 0.5)",
@@ -27,7 +33,7 @@ const StyledLeftbar = styled("div")(({ isMenuOpen = false }) => ({
   top: 0,
   padding: "2.5rem;",
   boxShadow: "7px 0px 8px rgba(172, 172, 172, 1)",
-  transition: "0.7s ease-in",
+  transition: "0.7s ease-in-out",
   "@media (max-width: 768px)": {
     width: "60%",
     overflow: "auto",
@@ -106,28 +112,62 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
               text="Home"
               href="/"
               paddingtop="1rem"
-              onClick={() => {
-                console.log("click");
-              }}
+              onClick={setIsMenuOpen}
             />
-            <LinkButton text="Skills" href="/" paddingtop="1rem" />
-            <LinkButton text="Projects" href="/" paddingtop="1rem" />
-            <LinkButton text="Work" href="/" paddingtop="1rem" />
-            <LinkButton text="Contact" href="/" paddingtop="1rem" />
+            <LinkButton
+              text="Skills"
+              href="/"
+              paddingtop="1rem"
+              onClick={setIsMenuOpen}
+            />
+            <LinkButton
+              text="Projects"
+              href="/"
+              paddingtop="1rem"
+              onClick={setIsMenuOpen}
+            />
+            <LinkButton
+              text="Work"
+              href="/"
+              paddingtop="1rem"
+              onClick={setIsMenuOpen}
+            />
+            <LinkButton
+              text="Contact"
+              href="/"
+              paddingtop="1rem"
+              onClick={setIsMenuOpen}
+            />
           </StyledNavbarList>
           <StyledContactContainer>
             <p style={{ color: "#5651e5" }}>Let's Connect...</p>
             <StyledContactButtonContainer>
-              <CircularButton>
+              <CircularButton
+                onClick={() => {
+                  handleOpenLink(LINKEDIN);
+                }}
+              >
                 <FaLinkedinIn />
               </CircularButton>
-              <CircularButton>
+              <CircularButton
+                onClick={() => {
+                  handleOpenLink(GITHUB);
+                }}
+              >
                 <FaGithub />
               </CircularButton>
-              <CircularButton>
+              <CircularButton
+                onClick={() => {
+                  handleOpenMailbox(EMAIL);
+                }}
+              >
                 <AiOutlineMail />
               </CircularButton>
-              <CircularButton>
+              <CircularButton
+                onClick={() => {
+                  handlePhoneCall(PHONE);
+                }}
+              >
                 <BsPhoneVibrate />
               </CircularButton>
             </StyledContactButtonContainer>

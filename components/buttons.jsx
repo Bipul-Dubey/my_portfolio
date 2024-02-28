@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledCircularButton = styled("div")(({ width, height }) => ({
+const StyledCircularButton = styled("a")(({ width, height }) => ({
   height: height,
   width: width,
   display: "flex",
@@ -11,6 +11,7 @@ const StyledCircularButton = styled("div")(({ width, height }) => ({
   padding: "0.5rem",
   marginLeft: "0.2rem",
   cursor: "pointer",
+  backgroundColor: "#ffffff",
   boxShadow:
     "0px 0px 4px 4px rgba(154, 153, 153, 0.4), inset 2px 2px 2px 4px rgba(244, 238, 238, 0.4)",
   "&:hover": {

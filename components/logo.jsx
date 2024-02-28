@@ -8,7 +8,7 @@ const StyledLogoContainer = styled("div")(({ isShort }) => ({
   textTransform: "capitalize",
   fontWeight: "700",
   letterSpacing: "2px",
-  textShadow: " 2px 5px 4px #aaf",
+  textShadow: "2px 5px 4px #aaf",
   width: isShort ? "100px" : "160px",
 }));
 

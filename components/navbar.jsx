@@ -10,8 +10,9 @@ const StyledMainNavbarContainer = styled("div")(({ isScrolled = false }) => ({
   position: "fixed",
   width: "100%",
   height: "60px",
-  boxShadow:
-    "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+  boxShadow: isScrolled
+    ? "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+    : "0 5px 5px -4px rgb(0 0 0 / 0.1)",
   zIndex: "10000",
 }));
 
@@ -21,7 +22,7 @@ const StyledNavbarContainer = styled("div")(({}) => ({
   alignItems: "center",
   width: "100%",
   height: "100%",
-  padding: "8px",
+  padding: "8px 10px",
 }));
 
 const StyledNavigationList = styled("ul")(({}) => ({
@@ -65,14 +66,7 @@ const Navbar = () => {
       <StyledNavbarContainer>
         <PersonalLogo />
         <StyledNavigationList>
-          <LinkButton
-            text="Home"
-            href="/"
-            marginleft="2.5rem"
-            onClick={() => {
-              console.log("click");
-            }}
-          />
+          <LinkButton text="Home" href="/" marginleft="2.5rem" />
           <LinkButton text="Skills" href="/" marginleft="2.3rem" />
           <LinkButton text="Projects" href="/" marginleft="2.3rem" />
           <LinkButton text="Work" href="/" marginleft="2.3rem" />
