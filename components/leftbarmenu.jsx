@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { CircularButton } from "./buttons";
 import PersonalLogo from "./logo";
-import { LinkButton, StyledHorizontalLine } from "./commonComponents";
+import { LinkButton, StyledHorizontalLine, Title } from "./commonComponents";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { BsPhoneVibrate } from "react-icons/bs";
 import {
@@ -99,11 +99,9 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
               <AiOutlineClose />
             </CircularButton>
           </StyledLefbarContent>
-          <div>
-            <p style={{ marginTop: "0.5rem" }}>
-              Let's builds something together...
-            </p>
-          </div>
+          <Title fontType="2" type="p">
+            Let's builds something together...
+          </Title>
           <StyledHorizontalLine />
         </div>
         <StyledNavigationContainer>
@@ -116,31 +114,33 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
             />
             <LinkButton
               text="Skills"
-              href="/"
+              href="#skills"
               paddingtop="1rem"
               onClick={setIsMenuOpen}
             />
-            <LinkButton
+            {/* <LinkButton
               text="Projects"
-              href="/"
+              href="#projects"
               paddingtop="1rem"
               onClick={setIsMenuOpen}
             />
             <LinkButton
               text="Work"
-              href="/"
+              href="#works"
               paddingtop="1rem"
               onClick={setIsMenuOpen}
             />
             <LinkButton
               text="Contact"
-              href="/"
+              href="#contact"
               paddingtop="1rem"
               onClick={setIsMenuOpen}
-            />
+            /> */}
           </StyledNavbarList>
           <StyledContactContainer>
-            <p style={{ color: "#5651e5" }}>Let's Connect...</p>
+            <Title style={{ color: "#5651e5" }} fontType="2" type="h4">
+              Let's Connect...
+            </Title>
             <StyledContactButtonContainer>
               <CircularButton
                 onClick={() => {
