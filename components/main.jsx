@@ -10,11 +10,12 @@ import {
   handlePhoneCall,
 } from "@/common/utils";
 import { EMAIL, GITHUB, LINKEDIN, PHONE } from "@/common/constant";
+import { Title } from "./commonComponents";
 
 const StyledMainContainer = styled("div")(({}) => ({
   background:
-    "linear-gradient(to left top, #8facd8, #9ac5e6, #a0daf3, #b5e6f2, #b6fbff)",
-  height: "100vh",
+    "linear-gradient(to right bottom, #8facd8, #9ac5e6, #a0daf3, #b5e6f2, #b6fbff)",
+  minHeight: "100vh",
   width: "100%",
   margin: "auto",
   display: "flex",
@@ -29,6 +30,9 @@ const StyledContainer = styled("div")(({}) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  "@media (max-width: 768px)": {
+    height: "90%",
+  },
 }));
 
 const StyledInfoContainer = styled("div")(({}) => ({
@@ -37,6 +41,7 @@ const StyledInfoContainer = styled("div")(({}) => ({
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
+  gap: "7px",
 }));
 
 const animate = keyframes`
@@ -69,38 +74,6 @@ const StyledImageContainer = styled("div")(
     `
 );
 
-const Title = styled("div")(
-  ({
-    type = "h4",
-    color = "#000",
-    center,
-    inline,
-    uppercase,
-    capitalize,
-    padding = "",
-  }) =>
-    css`
-      display: ${inline ? "inline" : ""};
-      font-size: ${type == "h1"
-        ? "3rem"
-        : type == "h2"
-        ? "2.5rem"
-        : type == "h3"
-        ? "2rem"
-        : type == "p"
-        ? "1.1rem"
-        : ""};
-      padding: ${padding};
-      color: ${color};
-      text-align: ${center ? "center" : ""};
-      text-transform: ${uppercase
-        ? "uppercase"
-        : capitalize
-        ? "capitalize"
-        : ""};
-    `
-);
-
 const StyledIconContainer = styled("div")(({}) => ({
   display: "flex",
   gap: "17px",
@@ -112,28 +85,35 @@ const StyledIconContainer = styled("div")(({}) => ({
 
 const MainPage = () => {
   return (
-    <StyledMainContainer id="main-page">
+    <StyledMainContainer id="main-section">
       <StyledInfoContainer>
-        <Title uppercase type="p" color="#a3a3a3">
+        <Title uppercase type="p" color="#fff">
           Let's Build Something Together
         </Title>
-        <Title type="h1" color="#000" center>
+        <Title type="h1" color="#000" center fontType="2">
           Hi, I'm{" "}
           <Title inline color="#060de5">
             Bipul Dubey
           </Title>
           .
         </Title>
-        <Title type="h3" color="#000" center>
-          A Full-Stack Developer!
+        <Title type="h3" color="#000" center fontType="2">
+          Associate Developer!
         </Title>
-        <Title center padding="0px 2rem" color="#a3a3a3">
+        <Title
+          center
+          padding="0px 2rem"
+          color="#fff"
+          fontType="2"
+          style={{ lineHeight: "17px" }}
+        >
           I'm front-end developer specializing in building (occasionally
           designing) digital experiences. Currently, I'm focused on building
           frontend applications while learning back-end technologies.
         </Title>
         <StyledIconContainer>
           <CircularButton
+            medium
             onClick={() => {
               handleOpenLink(LINKEDIN);
             }}
@@ -141,6 +121,7 @@ const MainPage = () => {
             <FaLinkedinIn />
           </CircularButton>
           <CircularButton
+            medium
             onClick={() => {
               handleOpenLink(GITHUB);
             }}
@@ -148,6 +129,7 @@ const MainPage = () => {
             <FaGithub />
           </CircularButton>
           <CircularButton
+            medium
             onClick={() => {
               handleOpenMailbox(EMAIL);
             }}
@@ -155,6 +137,7 @@ const MainPage = () => {
             <AiOutlineMail />
           </CircularButton>
           <CircularButton
+            medium
             onClick={() => {
               handlePhoneCall(PHONE);
             }}

@@ -43,3 +43,54 @@ export const StyledHorizontalLine = styled("hr")(({}) => ({
   backgroundColor: "gray",
   boxShadow: "0px 1px 1px 1px rgba(168, 168, 168, 0.5)",
 }));
+
+// used for text
+export const Title = styled("div")(
+  ({
+    type = "",
+    fontType,
+    color = "#000",
+    center,
+    inline,
+    uppercase,
+    capitalize,
+    padding = "",
+  }) => ({
+    display: inline ? "inline" : "",
+    fontSize:
+      type == "h1"
+        ? "3rem"
+        : type == "h2"
+        ? "2.5rem"
+        : type == "h3"
+        ? "2rem"
+        : type == "h4"
+        ? "1.3rem"
+        : type == "h5"
+        ? "1.2rem"
+        : type == "p"
+        ? "1.1rem"
+        : "",
+    padding: padding,
+    color: color,
+    textAlign: center ? "center" : "",
+    textTransform: uppercase ? "uppercase" : capitalize ? "capitalize" : "",
+    fontFamily:
+      fontType == 1
+        ? "Roboto Slab, serif"
+        : fontType == 2
+        ? "League Spartan, sans-serif"
+        : fontType == 3
+        ? "Lato, sans-serif"
+        : "",
+  })
+);
+
+// container for sections except main
+export const StyledSectionContainer = styled("div")(({ bgcolor = "" }) => ({
+  width: "100%",
+  minHeight: "100vh",
+  display: "flex",
+  paddingTop: "3.8rem",
+  backgroundColor: bgcolor,
+}));
