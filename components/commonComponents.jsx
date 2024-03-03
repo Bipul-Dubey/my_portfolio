@@ -37,8 +37,8 @@ export const LinkButton = ({
   );
 };
 
-export const StyledHorizontalLine = styled("hr")(({}) => ({
-  width: "100%",
+export const StyledHorizontalLine = styled("hr")(({ width = "100%" }) => ({
+  width: width,
   height: "0.1rem",
   backgroundColor: "gray",
   boxShadow: "0px 1px 1px 1px rgba(168, 168, 168, 0.5)",
@@ -93,4 +93,5 @@ export const StyledSectionContainer = styled("div")(({ bgcolor = "" }) => ({
   display: "flex",
   paddingTop: "3.8rem",
   backgroundColor: bgcolor,
+  justifyContent: "center",
 }));
