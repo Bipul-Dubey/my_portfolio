@@ -70,7 +70,7 @@ export const Title = styled("div")(
         ? "1.2rem"
         : type == "p"
         ? "1.1rem"
-        : "",
+        : "0.9rem",
     padding: padding,
     color: color,
     textAlign: center ? "center" : "",
@@ -93,5 +93,6 @@ export const StyledSectionContainer = styled("div")(({ bgcolor = "" }) => ({
   display: "flex",
   paddingTop: "3.8rem",
   backgroundColor: bgcolor,
-  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
 }));
