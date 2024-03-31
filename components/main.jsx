@@ -92,7 +92,7 @@ const MainPage = () => {
         </Title>
         <Title type="h1" color="#000" center fontType="2">
           Hi, I'm{" "}
-          <Title inline color="#060de5">
+          <Title inline color="#060de5" type="h1">
             Bipul Dubey
           </Title>
           .

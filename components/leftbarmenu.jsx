@@ -118,15 +118,15 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
               paddingtop="1rem"
               onClick={setIsMenuOpen}
             />
-            {/* <LinkButton
-              text="Projects"
-              href="#projects"
-              paddingtop="1rem"
-              onClick={setIsMenuOpen}
-            />
             <LinkButton
               text="Work"
               href="#works"
+              paddingtop="1rem"
+              onClick={setIsMenuOpen}
+            />
+            {/* <LinkButton
+              text="Projects"
+              href="#projects"
               paddingtop="1rem"
               onClick={setIsMenuOpen}
             />

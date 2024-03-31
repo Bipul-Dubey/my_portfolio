@@ -1,6 +1,7 @@
 import MainPage from "@/components/main";
 import Navbar from "@/components/navbar";
 import Skills from "@/components/skills";
+import Works from "@/components/works";
 import Head from "next/head";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <MainPage />
       <Skills />
+      <Works />
     </>
   );
 }

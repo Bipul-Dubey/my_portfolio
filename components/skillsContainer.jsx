@@ -40,6 +40,13 @@ const StyledSkillsContainer = styled("div")(({}) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   gap: "3px",
+  "& > :nth-child(1)": {
+    display: "none",
+    transition: "display 1s ease-in-out",
+  },
+  "&:hover > :nth-child(1)": {
+    display: "flex",
+  },
 }));
 
 const SkillsContainer = ({ skills }) => {
@@ -47,8 +54,8 @@ const SkillsContainer = ({ skills }) => {
     <StyledSkilledContainer>
       {skills?.languages?.map((skill) => (
         <StyledSkillsContainer>
-          <Image src={skill?.icons} />
           <Title uppercase>{skill?.language_name}</Title>
+          <Image src={skill?.icons} />
         </StyledSkillsContainer>
       ))}
     </StyledSkilledContainer>

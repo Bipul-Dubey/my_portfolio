@@ -132,3 +132,27 @@ export const SkillsList = [
     ],
   },
 ];
+
+export const WorkExperince = [
+  {
+    image: "/assets/xenonstack.png",
+    company_name: "XenonStack Private Limited",
+    duration: "Sept 2023 - Present",
+    role: "UI Engineer",
+    description: [
+      "Worked closely with senior engineers to implement UI designs and functionalities.",
+      "Gained hands-on experience with React and Next.js in a professional setting.",
+      "Participated in team meetings and contributed ideas to enhance project outcomes.",
+    ],
+  },
+  {
+    image: "/assets/xenonstack.png",
+    company_name: "XenonStack Private Limited",
+    duration: "Jan 2023 - Sept 2023",
+    role: "Assosciate Software Engineer Intern",
+    description: [
+      "Gain experience in working for real projects.",
+      "Working in team collaborations",
+    ],
+  },
+];
