@@ -94,10 +94,10 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
       <StyledLeftbar isMenuOpen={isMenuOpen} ref={leftbarRef}>
         <div>
           <StyledLefbarContent>
-            <PersonalLogo isShort />
-            <CircularButton onClick={setIsMenuOpen}>
+            <PersonalLogo />
+            {/* <CircularButton onClick={setIsMenuOpen}>
               <AiOutlineClose />
-            </CircularButton>
+            </CircularButton> */}
           </StyledLefbarContent>
           <Title fontType="2" type="p">
             Let's builds something together...
