@@ -64,7 +64,7 @@ const Navbar = () => {
   return (
     <StyledMainNavbarContainer isScrolled={scrolled}>
       <StyledNavbarContainer>
-        <PersonalLogo />
+        <PersonalLogo isNotScrolled={!scrolled} />
         <StyledNavigationList>
           <LinkButton text="Home" href="/" marginleft="2.5rem" />
           <LinkButton text="Skills" href="#skills" marginleft="2.3rem" />
