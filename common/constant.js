@@ -156,3 +156,41 @@ export const WorkExperince = [
     ],
   },
 ];
+
+export const PersonalProjectList = [
+  {
+    name: "Questions Practice",
+    images: [
+      "/assets/project1/image-1.png",
+      "/assets/project1/image-2.png",
+      "/assets/project1/image-3.png",
+    ],
+    technology: [
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Google Email",
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Google Email",
+    ],
+    features: [
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium hello accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
+    ],
+    links: [
+      {
+        site: "GitHub",
+        link: "https://github.com/Bipul-Dubey/Questions-Practice",
+      },
+    ],
+  },
+];

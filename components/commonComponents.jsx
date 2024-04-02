@@ -55,6 +55,7 @@ export const Title = styled("div")(
     uppercase,
     capitalize,
     padding = "",
+    bold = false,
   }) => ({
     display: inline ? "inline" : "",
     fontSize:
@@ -83,6 +84,7 @@ export const Title = styled("div")(
         : fontType == 3
         ? "Lato, sans-serif"
         : "",
+    fontWeight: bold ? 600 : "",
   })
 );
 
