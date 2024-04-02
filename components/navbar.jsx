@@ -69,7 +69,8 @@ const Navbar = () => {
           <LinkButton text="Home" href="/" marginleft="2.5rem" />
           <LinkButton text="Skills" href="#skills" marginleft="2.3rem" />
           <LinkButton text="Work" href="#works" marginleft="2.3rem" />
-          {/* <LinkButton text="Projects" href="#projects" marginleft="2.3rem" />
+          <LinkButton text="Projects" href="#projects" marginleft="2.3rem" />
+          {/*
           <LinkButton text="Contact" href="#contact" marginleft="2.3rem" /> */}
         </StyledNavigationList>
         <StyledMenuButton onClick={handleLeftbar} />
