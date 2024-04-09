@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { StyledSectionContainer, Title } from "./commonComponents";
+import {
+  StyledHorizontalLine,
+  StyledSectionContainer,
+  Title,
+} from "./commonComponents";
 import { PersonalProjectList } from "@/common/constant";
 import Link from "next/link";
 
@@ -63,6 +67,9 @@ const StyledSliderNavbar = styled("div")(({}) => ({
   left: "50%",
   transform: "translateX(-50%)",
   zIndex: 100,
+  backgroundColor: "#ce0d7b",
+  padding: 7,
+  borderRadius: 21,
 }));
 
 const StyledSliderLink = styled(Link)(({}) => ({
@@ -136,19 +143,23 @@ const PersonalProject = () => {
               <Title bold style={{ fontSize: "1.1rem" }} fontType="2">
                 Features
               </Title>
-              {item?.features?.map((feature) => (
-                <li>
+              {item?.features?.map((feature, index) => (
+                <div>
                   <Title
                     inline
                     style={{
-                      position: "relative",
-                      left: "-7px",
                       fontSize: "1rem",
+                      textAlign: "justify",
                     }}
                   >
                     {feature}
                   </Title>
-                </li>
+                  {item?.features?.length - 1 != index ? (
+                    <StyledHorizontalLine />
+                  ) : (
+                    ""
+                  )}
+                </div>
               ))}
             </StyledCard>
             <StyledCard>
