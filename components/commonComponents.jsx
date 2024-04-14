@@ -56,6 +56,7 @@ export const Title = styled("div")(
     capitalize,
     padding = "",
     bold = false,
+    link = false,
   }) => ({
     display: inline ? "inline" : "",
     fontSize:
@@ -73,7 +74,7 @@ export const Title = styled("div")(
         ? "1.1rem"
         : "0.9rem",
     padding: padding,
-    color: color,
+    color: link ? "#727df1" : color,
     textAlign: center ? "center" : "",
     textTransform: uppercase ? "uppercase" : capitalize ? "capitalize" : "",
     fontFamily:
@@ -85,16 +86,19 @@ export const Title = styled("div")(
         ? "Lato, sans-serif"
         : "",
     fontWeight: bold ? 600 : "",
+    textDecoration: link ? "underline" : "",
+    cursor: link ? "pointer" : "default",
   })
 );
 
 // container for sections except main
 export const StyledSectionContainer = styled("div")(({ bgcolor = "" }) => ({
   width: "100%",
-  minHeight: "100vh",
+  minHeight: "100%",
   display: "flex",
   paddingTop: "3.8rem",
   backgroundColor: bgcolor,
   alignItems: "center",
   flexDirection: "column",
+  "@media (max-width: 768px)": {},
 }));
