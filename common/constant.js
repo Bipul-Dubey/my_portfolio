@@ -33,10 +33,22 @@ import {
   ubuntu,
 } from "@/public/icons";
 
-export const EMAIL = "bipul0873@gmail.com";
-export const PHONE = "+91 6391345389";
-export const LINKEDIN = "https://www.linkedin.com/in/bipul-dubey-34ab8b225/";
-export const GITHUB = "https://github.com/Bipul-Dubey";
+export const INFO = {
+  links: {
+    email: "bipul0873@gmail.com",
+    phone: "+91 6391345389",
+    linkedin: "https://www.linkedin.com/in/bipul-dubey-34ab8b225/",
+    github: "https://github.com/Bipul-Dubey",
+  },
+  personalDetails: {
+    name: "Bipul Dubey",
+    job: "Associate Software Engineer!",
+    shortGreet: "LET'S BUILD SOMETHING TOGETHER",
+    shortSummary:
+      "I'm front-end developer specializing in building (occasionally designing) digital experiences. Currently, I'm focused on building frontend applications while learning back-end technologies.",
+    imageUrl: "/assets/bipul.jpg",
+  },
+};
 
 export const SkillsList = [
   {

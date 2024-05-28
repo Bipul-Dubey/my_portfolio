@@ -9,8 +9,8 @@ import {
   handleOpenMailbox,
   handlePhoneCall,
 } from "@/common/utils";
-import { EMAIL, GITHUB, LINKEDIN, PHONE } from "@/common/constant";
 import { Title } from "./commonComponents";
+import { INFO } from "@/common/constant";
 
 const StyledMainContainer = styled("div")(({}) => ({
   background:
@@ -46,9 +46,10 @@ const StyledInfoContainer = styled("div")(({}) => ({
 
 const animate = keyframes`
   0%, 100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    border-radius: 30% 60% 40% 70% / 40% 50% 30% 60%;
   }
   50% {
+    /* border-radius: 30% 60% 40% 70% / 40% 50% 30% 60%; */
     border-radius: 30% 60% 40% 70% / 40% 50% 30% 60%;
   }
 `;
@@ -67,8 +68,8 @@ const StyledImageContainer = styled("div")(
       background-repeat: no-repeat;
       transform: scaleX(-1);
       @media (max-width: 768px) {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         transform: scaleX(1);
       }
     `
@@ -88,17 +89,17 @@ const MainPage = () => {
     <StyledMainContainer id="main-section">
       <StyledInfoContainer>
         <Title uppercase type="p" color="#fff">
-          Let's Build Something Together
+          {INFO.personalDetails.shortGreet}
         </Title>
         <Title type="h1" color="#000" center fontType="2">
           Hi, I'm{" "}
           <Title inline color="#060de5" type="h1">
-            Bipul Dubey
+            {INFO.personalDetails.name}
           </Title>
           .
         </Title>
         <Title type="h3" color="#000" center fontType="2">
-          Associate Developer!
+          {INFO.personalDetails.job}
         </Title>
         <Title
           center
@@ -107,15 +108,13 @@ const MainPage = () => {
           fontType="2"
           style={{ lineHeight: "17px" }}
         >
-          I'm front-end developer specializing in building (occasionally
-          designing) digital experiences. Currently, I'm focused on building
-          frontend applications while learning back-end technologies.
+          {INFO.personalDetails.shortSummary}
         </Title>
         <StyledIconContainer>
           <CircularButton
             medium
             onClick={() => {
-              handleOpenLink(LINKEDIN);
+              handleOpenLink(INFO.links.linkedin);
             }}
           >
             <FaLinkedinIn />
@@ -123,7 +122,7 @@ const MainPage = () => {
           <CircularButton
             medium
             onClick={() => {
-              handleOpenLink(GITHUB);
+              handleOpenLink(INFO.links.github);
             }}
           >
             <FaGithub />
@@ -131,7 +130,7 @@ const MainPage = () => {
           <CircularButton
             medium
             onClick={() => {
-              handleOpenMailbox(EMAIL);
+              handleOpenMailbox(INFO.links.email);
             }}
           >
             <AiOutlineMail />
@@ -139,7 +138,7 @@ const MainPage = () => {
           <CircularButton
             medium
             onClick={() => {
-              handlePhoneCall(PHONE);
+              handlePhoneCall(INFO.links.phone);
             }}
           >
             <BsPhoneVibrate />

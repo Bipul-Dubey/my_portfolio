@@ -100,6 +100,7 @@ const StyledCard = styled("div")(({ isSameRow = false, noBorder = false }) => ({
   display: "flex",
   justifyContent: "space-between",
   flexDirection: isSameRow ? "row" : "column",
+  alignItems: isSameRow ? "center" : "",
 }));
 
 const PersonalProject = () => {
