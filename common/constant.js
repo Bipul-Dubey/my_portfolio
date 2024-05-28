@@ -33,10 +33,22 @@ import {
   ubuntu,
 } from "@/public/icons";
 
-export const EMAIL = "bipul0873@gmail.com";
-export const PHONE = "+91 6391345389";
-export const LINKEDIN = "https://www.linkedin.com/in/bipul-dubey-34ab8b225/";
-export const GITHUB = "https://github.com/Bipul-Dubey";
+export const INFO = {
+  links: {
+    email: "bipul0873@gmail.com",
+    phone: "+91 6391345389",
+    linkedin: "https://www.linkedin.com/in/bipul-dubey-34ab8b225/",
+    github: "https://github.com/Bipul-Dubey",
+  },
+  personalDetails: {
+    name: "Bipul Dubey",
+    job: "Associate Software Engineer!",
+    shortGreet: "LET'S BUILD SOMETHING TOGETHER",
+    shortSummary:
+      "I'm front-end developer specializing in building (occasionally designing) digital experiences. Currently, I'm focused on building frontend applications while learning back-end technologies.",
+    imageUrl: "/assets/bipul.jpg",
+  },
+};
 
 export const SkillsList = [
   {
@@ -46,10 +58,6 @@ export const SkillsList = [
         icons: javascript,
       },
       {
-        language_name: "Golang",
-        icons: golang,
-      },
-      {
         language_name: "python",
         icons: python,
       },
@@ -57,10 +65,10 @@ export const SkillsList = [
         language_name: "sql",
         icons: sql,
       },
-      {
-        language_name: "C++",
-        icons: cplusplus,
-      },
+      // {
+      //   language_name: "C++",
+      //   icons: cplusplus,
+      // },
       {
         language_name: "CSS",
         icons: css,
@@ -122,6 +130,10 @@ export const SkillsList = [
   {
     languages: [
       {
+        language_name: "Golang",
+        icons: golang,
+      },
+      {
         language_name: "Flutter",
         icons: flutter,
       },
@@ -135,24 +147,25 @@ export const SkillsList = [
 
 export const WorkExperince = [
   {
-    image: "/assets/xenonstack.png",
-    company_name: "XenonStack Private Limited",
-    duration: "Sept 2023 - Present",
-    role: "UI Engineer",
+    image: "/assets/xenonstack.pn",
+    company_name: "Confidential",
+    duration: "17, Jan 2023 - Present",
+    role: "Intern",
     description: [
       "Worked closely with senior engineers to implement UI designs and functionalities.",
       "Gained hands-on experience with React and Next.js in a professional setting.",
-      "Participated in team meetings and contributed ideas to enhance project outcomes.",
     ],
   },
   {
-    image: "/assets/xenonstack.png",
-    company_name: "XenonStack Private Limited",
-    duration: "Jan 2023 - Sept 2023",
-    role: "Assosciate Software Engineer Intern",
+    image: "/assets/xenonstack.pn",
+    company_name: "Confidential",
+    duration: "17, Jan 2023 - Present",
+    role: "Intern, UI Engineer",
     description: [
-      "Gain experience in working for real projects.",
-      "Working in team collaborations",
+      "Front-end Engineer worked on project Next.js",
+      "Implement UI designs and functionalities.",
+      "Gained hands-on experience with React and Next.js in a professional setting.",
+      "Participated in team meetings and contributed ideas to enhance project outcomes.",
     ],
   },
 ];
@@ -172,124 +185,11 @@ export const PersonalProjectList = [
       "CSS",
       "JavaScript",
       "Google Email",
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
     ],
     features: [
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium hello accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-    ],
-    links: [
-      {
-        site: "GitHub",
-        link: "https://github.com/Bipul-Dubey/Questions-Practice",
-      },
-    ],
-  },
-  {
-    name: "Questions Practice",
-    images: [
-      "/assets/project1/image-1.png",
-      "/assets/project1/image-2.png",
-      "/assets/project1/image-3.png",
-    ],
-    technology: [
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
-    ],
-    features: [
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium hello accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-    ],
-    links: [
-      {
-        site: "GitHub",
-        link: "https://github.com/Bipul-Dubey/Questions-Practice",
-      },
-    ],
-  },
-  {
-    name: "Questions Practice",
-    images: [
-      "/assets/project1/image-1.png",
-      "/assets/project1/image-2.png",
-      "/assets/project1/image-3.png",
-    ],
-    technology: [
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
-    ],
-    features: [
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium hello accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-    ],
-    links: [
-      {
-        site: "GitHub",
-        link: "https://github.com/Bipul-Dubey/Questions-Practice",
-      },
-    ],
-  },
-  {
-    name: "Questions Practice",
-    images: [
-      "/assets/project1/image-1.png",
-      "/assets/project1/image-2.png",
-      "/assets/project1/image-3.png",
-    ],
-    technology: [
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
-      "Python",
-      "Django",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Google Email",
-    ],
-    features: [
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium hello accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus laudantium accusantium culpa placeat eveniet corporis dolorum repellat cum aspernatur unde?",
+      "User Authentiation in DJango with email verification.",
+      "Subjective and Objective questions are available. Also an user can add upto 5 question in Objective and N number question in subjective.",
+      "Others can comment on subjective question and reply on them.",
     ],
     links: [
       {

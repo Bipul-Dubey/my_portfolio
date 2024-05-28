@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { AiOutlineClose, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
 import { CircularButton } from "./buttons";
 import PersonalLogo from "./logo";
 import { LinkButton, StyledHorizontalLine, Title } from "./commonComponents";
@@ -11,7 +11,7 @@ import {
   handleOpenMailbox,
   handlePhoneCall,
 } from "@/common/utils";
-import { EMAIL, GITHUB, LINKEDIN, PHONE } from "@/common/constant";
+import { INFO } from "@/common/constant";
 
 const StyledMainLeftBar = styled("div")(({ isMenuOpen = false }) => ({
   backgroundColor: "rgba(173, 173, 173, 0.5)",
@@ -100,7 +100,7 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
             </CircularButton> */}
           </StyledLefbarContent>
           <Title fontType="2" type="p">
-            Let's builds something together...
+            {INFO.personalDetails.shortGreet}
           </Title>
           <StyledHorizontalLine />
         </div>
@@ -145,28 +145,28 @@ const Leftbarmenu = ({ isMenuOpen, setIsMenuOpen }) => {
             <StyledContactButtonContainer>
               <CircularButton
                 onClick={() => {
-                  handleOpenLink(LINKEDIN);
+                  handleOpenLink(INFO.links.linkedin);
                 }}
               >
                 <FaLinkedinIn />
               </CircularButton>
               <CircularButton
                 onClick={() => {
-                  handleOpenLink(GITHUB);
+                  handleOpenLink(INFO.links.github);
                 }}
               >
                 <FaGithub />
               </CircularButton>
               <CircularButton
                 onClick={() => {
-                  handleOpenMailbox(EMAIL);
+                  handleOpenMailbox(INFO.links.email);
                 }}
               >
                 <AiOutlineMail />
               </CircularButton>
               <CircularButton
                 onClick={() => {
-                  handlePhoneCall(PHONE);
+                  handlePhoneCall(INFO.links.phone);
                 }}
               >
                 <BsPhoneVibrate />

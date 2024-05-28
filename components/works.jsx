@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledSectionContainer, Title } from "./commonComponents";
+import { Reveal, StyledSectionContainer, Title } from "./commonComponents";
 import styled from "styled-components";
 import Image from "next/image";
 import { WorkExperince } from "@/common/constant";

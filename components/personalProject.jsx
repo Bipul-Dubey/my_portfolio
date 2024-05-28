@@ -100,6 +100,7 @@ const StyledCard = styled("div")(({ isSameRow = false, noBorder = false }) => ({
   display: "flex",
   justifyContent: "space-between",
   flexDirection: isSameRow ? "row" : "column",
+  alignItems: isSameRow ? "center" : "",
 }));
 
 const PersonalProject = () => {
@@ -116,7 +117,7 @@ const PersonalProject = () => {
             <StyledProjectInfoContainer>
               <StyledCard noBorder isSameRow>
                 <Title type="h4" bold fontType="2">
-                  {item?.name} {idx}
+                  {item?.name}
                 </Title>
                 {previewIndex == idx ? (
                   <Title
