@@ -172,6 +172,13 @@ export const WorkExperince = [
 
 export const PersonalProjectList = [
   {
+    name: "Chat Arena - In Progress",
+    images: [],
+    technology: ["Next.Js", "Redux"],
+    features: ["Chat Application UI"],
+    links: [],
+  },
+  {
     name: "Questions Practice",
     images: [
       "/assets/project1/image-1.png",
