@@ -117,7 +117,7 @@ const PersonalProject = () => {
             <StyledProjectInfoContainer>
               <StyledCard noBorder isSameRow>
                 <Title type="h4" bold fontType="2">
-                  {item?.name} {idx}
+                  {item?.name}
                 </Title>
                 {previewIndex == idx ? (
                   <Title
