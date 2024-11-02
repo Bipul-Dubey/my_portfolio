@@ -8,7 +8,7 @@ export default function HeroSection() {
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        padding: "3% 1%",
+        padding: "7% 1% 0px 0px",
         textAlign: "center",
         color: "rgba(10, 10, 10, 0.9)",
         gap: "21px",
