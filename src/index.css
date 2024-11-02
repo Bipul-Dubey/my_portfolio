@@ -3,3 +3,40 @@
   margin: 0px;
   box-sizing: border-box;
 }
+
+#tsparticles {
+  position: relative;
+  z-index: -1;
+}
+
+.karla-font {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.unselectable {
+  user-select: none;
+  -webkit-user-select: none; /* For Safari */
+  -ms-user-select: none; /* For IE */
+  -moz-user-select: none; /* For Firefox */
+}
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fae1af;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f9d07d;
+}
