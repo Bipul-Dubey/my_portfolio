@@ -1,7 +1,8 @@
 * {
-  padding: Opx;
+  padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 #tsparticles {
@@ -39,4 +40,36 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #f9d07d;
+}
+
+/* animation container up and down */
+.up-down-animation {
+  animation: upDown 2s ease-in-out infinite;
+}
+
+@keyframes upDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Move up by 10px */
+  }
+}
+
+.c-technical-skill {
+  flex: 1 1 30%;
+  min-width: 400px;
+  max-width: 550px;
+  height: 400px;
+  max-height: 500px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 5px;
+}
+
+.c-technical-skill:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
