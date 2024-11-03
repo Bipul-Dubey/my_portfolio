@@ -1,4 +1,8 @@
-import { useElementInView } from "../customhooks/intersectionobserver";
+import { Redirect } from "../assets/index,";
+import { SITE_DETAILS } from "../constants/siteconstants";
+import AnimatedContainer from "./common/animatedcontainer";
+import IconStyle from "./common/iconstyle";
+import Redirection from "./common/redirection";
 import SectionHeading from "./common/sectionheading";
 
 export default function MyProject() {
@@ -23,26 +27,43 @@ export default function MyProject() {
           justifyContent: "center",
         }}
       >
-        {Array(2)
-          .fill(4)
-          .map((_, index) => (
-            <ProjectContainer key={index} />
-          ))}
+        {SITE_DETAILS.MY_PROJECTS.map((item, index) => (
+          <AnimatedContainer
+            key={index}
+            style={{
+              minHeight: "200px",
+              minWidth: "200px",
+              width: "500px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "60px 45px",
+              gap: "12px",
+              textAlign: "center",
+            }}
+          >
+            <img src={item.site_logo_url} alt={item.site_name} />
+            <h3
+              style={{
+                fontWeight: 400,
+                fontSize: "18px",
+                fontFamily: `Poppins, sans-serif`,
+              }}
+            >
+              {item.short_description}
+            </h3>
+            <Redirection
+              href={item.site_url || "#"}
+              style={{
+                marginTop: "20px",
+              }}
+            >
+              <IconStyle src={Redirect} /> redirection
+            </Redirection>
+          </AnimatedContainer>
+        ))}
       </div>
     </div>
   );
 }
-
-const ProjectContainer = () => {
-  const [targetRef, isInView] = useElementInView({ threshold: 0.2 });
-
-  return (
-    <div
-      key={"ProjectContainer"}
-      ref={targetRef}
-      className={`c-technical-skill pop-out-container ${
-        isInView ? "in-view" : ""
-      }`}
-    ></div>
-  );
-};

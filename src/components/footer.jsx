@@ -6,13 +6,13 @@ export default function Footer() {
       style={{
         width: "100%",
         backgroundColor: "#8a73fb",
-        padding: "4% 0%",
+        padding: "2% 0% 4% 0%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      <Logo />
+      <Logo color={"#fff"} shortColor={"#fff"} />
     </div>
   );
 }
