@@ -1,3 +1,4 @@
+import { useElementInView } from "../customhooks/intersectionobserver";
 import SectionHeading from "./common/sectionheading";
 
 export default function MyProject() {
@@ -25,9 +26,23 @@ export default function MyProject() {
         {Array(2)
           .fill(4)
           .map((_, index) => (
-            <div key={index} className="c-technical-skill"></div>
+            <ProjectContainer key={index} />
           ))}
       </div>
     </div>
   );
 }
+
+const ProjectContainer = () => {
+  const [targetRef, isInView] = useElementInView({ threshold: 0.2 });
+
+  return (
+    <div
+      key={"ProjectContainer"}
+      ref={targetRef}
+      className={`c-technical-skill pop-out-container ${
+        isInView ? "in-view" : ""
+      }`}
+    ></div>
+  );
+};

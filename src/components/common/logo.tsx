@@ -14,6 +14,7 @@ export default function Logo() {
         gap: 7,
         textTransform: "uppercase",
       }}
+      className="karla-font"
     >
       <div
         style={{

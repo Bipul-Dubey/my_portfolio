@@ -1,3 +1,5 @@
+import Logo from "./common/logo";
+
 export default function Footer() {
   return (
     <div
@@ -10,7 +12,7 @@ export default function Footer() {
         alignItems: "center",
       }}
     >
-      Footer
+      <Logo />
     </div>
   );
 }

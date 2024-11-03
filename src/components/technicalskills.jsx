@@ -1,3 +1,4 @@
+import { useElementInView } from "../customhooks/intersectionobserver";
 import SectionHeading from "./common/sectionheading";
 
 export default function TechnicalSkills() {
@@ -24,9 +25,22 @@ export default function TechnicalSkills() {
         {Array(3)
           .fill(1)
           .map((_, index) => (
-            <div key={index} className="c-technical-skill "></div>
+            <TechnicalSkillContainer key={index} />
           ))}
       </div>
     </div>
   );
 }
+
+const TechnicalSkillContainer = () => {
+  const [targetRef, isInView] = useElementInView({ threshold: 0.2 });
+
+  return (
+    <div
+      ref={targetRef}
+      className={`c-technical-skill pop-out-container ${
+        isInView ? "in-view" : ""
+      }`}
+    ></div>
+  );
+};

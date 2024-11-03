@@ -73,3 +73,17 @@
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
+
+/* pop out animation */
+/* Initial styles for the container */
+.pop-out-container {
+  opacity: 0;
+  transform: translateY(50px) scale(0.95); /* Scale down slightly */
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+}
+
+/* Add the in-view class when the container is in the viewport */
+.pop-out-container.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Scale up to give a "pop" effect */
+}
