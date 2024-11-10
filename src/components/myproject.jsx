@@ -17,7 +17,7 @@ export default function MyProject() {
         gap: "12px",
       }}
     >
-      <SectionHeading heading="My Project" />
+      <SectionHeading heading="Personal Project" />
       <div
         style={{
           maxWidth: "90%",
@@ -42,8 +42,24 @@ export default function MyProject() {
               gap: "12px",
               textAlign: "center",
             }}
+            className="c-technical-skill pop-out-container"
+            classNameInView="in-view"
           >
-            <img src={item.site_logo_url} alt={item.site_name} />
+            {!item.site_logo_url ? (
+              <h4
+                style={{
+                  fontSize: "1.4rem",
+                  fontWeight: 500,
+                  border: "1px solid grey",
+                  padding: "6px 8px",
+                  borderRadius: "6px",
+                }}
+              >
+                {item.site_name}
+              </h4>
+            ) : (
+              <img src={item.site_logo_url} alt={item.site_name} />
+            )}
             <h3
               style={{
                 fontWeight: 400,
@@ -59,7 +75,7 @@ export default function MyProject() {
                 marginTop: "20px",
               }}
             >
-              <IconStyle src={Redirect} /> redirection
+              <IconStyle src={Redirect} /> {item.site_url}
             </Redirection>
           </AnimatedContainer>
         ))}

@@ -1,4 +1,5 @@
-import AnimatedContainer from "./common/animatedcontainer";
+import StackIcon from "tech-stack-icons";
+import { SITE_DETAILS } from "../constants/siteconstants";
 import SectionHeading from "./common/sectionheading";
 
 export default function TechnicalSkills() {
@@ -10,31 +11,67 @@ export default function TechnicalSkills() {
         flexDirection: "column",
         alignItems: "center",
         gap: "7px",
+        color: "#000",
       }}
     >
-      <SectionHeading heading="Familier with Technology" />
-      <div
-        style={{
-          maxWidth: "90%",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "12px",
-          justifyContent: "center",
-        }}
-      >
-        {Array(4)
-          .fill(1)
-          .map((_, index) => (
-            <AnimatedContainer
-              key={index}
-              style={{
-                minHeight: "400px",
-                minWidth: "450px",
-                maxWidth: "600px",
-              }}
-            ></AnimatedContainer>
-          ))}
-      </div>
+      <SectionHeading heading="Technical Skills" />
+      {/* skill section */}
+      {SITE_DETAILS.TECHNICAL_SKILL.map((item) => (
+        <div
+          key={item.category + "container"}
+          style={{
+            width: "75%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "12px",
+            padding: "12px 0px",
+          }}
+        >
+          <h4
+            key={"heading-" + item.category}
+            style={{
+              fontWeight: 500,
+              textDecoration: "underline",
+            }}
+          >
+            {item.category}
+          </h4>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "4px",
+              flexWrap: "wrap",
+            }}
+          >
+            {item.skills.map((skill) => (
+              <div
+                key={skill.name}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "4px",
+                  border: "2px solid #d9d8da",
+                  padding: "8px 16px",
+                  borderRadius: "8px",
+                }}
+              >
+                <StackIcon
+                  name={skill.logo}
+                  style={{
+                    height: "50px",
+                    width: "55px",
+                    display: "flex",
+                  }}
+                />
+                <h5>{skill.name}</h5>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

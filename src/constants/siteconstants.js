@@ -1,3 +1,6 @@
+import { XenonStackIcon } from "../assets/index,";
+import { TECH_STACK_ICONS } from "./techstackicons";
+
 export const SITE_DETAILS = {
   NAME: "Bipul Dubey",
   HERO_SECTION: {
@@ -16,7 +19,46 @@ export const SITE_DETAILS = {
       site_logo_url: "",
       site_name: "Dev Utilities",
       short_description: "It's help developer or IT profession with tools.",
-      site_url: "",
+      site_url: "https://devutilities.netlify.app/",
+    },
+  ],
+  PROFESSIONAL_EXPERIENCE: [
+    {
+      company_name: "XenonStack Private Limited",
+      start_date: "Jan",
+      end_date: "Sept (2023)",
+      position: "Associate Software Engineer",
+      role: "UI Engineer",
+      responsibilities: ["role 1", "role 2"],
+      icon: XenonStackIcon,
+    },
+    {
+      company_name: "XenonStack Private Limited",
+      start_date: "Jan",
+      end_date: "Sept (2023)",
+      position: "Software Engineer",
+      role: "Full-Stack Developer",
+      responsibilities: ["role 1", "role 2"],
+      icon: XenonStackIcon,
+    },
+  ],
+  TECHNICAL_SKILL: [
+    {
+      category: "Development Skills",
+      skills: [
+        {
+          name: "HTML5",
+          logo: TECH_STACK_ICONS.HTML5,
+        },
+        {
+          name: "ReactJs",
+          logo: TECH_STACK_ICONS.React_JS,
+        },
+        {
+          name: "NextJs",
+          logo: TECH_STACK_ICONS.NEXT_JS2,
+        },
+      ],
     },
   ],
 };

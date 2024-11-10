@@ -2,7 +2,12 @@ import { useId } from "react";
 import { useElementInView } from "../../customhooks/intersectionobserver";
 import PropTypes from "prop-types";
 
-export default function AnimatedContainer({ children, style }) {
+export default function AnimatedContainer({
+  children,
+  style,
+  className,
+  classNameInView,
+}) {
   const [targetRef, isInView] = useElementInView({ threshold: 0.2 });
   const uuid = useId();
 
@@ -10,8 +15,8 @@ export default function AnimatedContainer({ children, style }) {
     <div
       key={"AnimatedContainer" + uuid}
       ref={targetRef}
-      className={`c-technical-skill pop-out-container ${
-        isInView ? "in-view" : ""
+      className={`${className ? className : ""} ${
+        classNameInView && isInView ? classNameInView : ""
       }`}
       style={style}
     >
@@ -23,4 +28,6 @@ export default function AnimatedContainer({ children, style }) {
 AnimatedContainer.propTypes = {
   children: PropTypes.node,
   style: PropTypes.object,
+  className: PropTypes.string,
+  classNameInView: PropTypes.string,
 };

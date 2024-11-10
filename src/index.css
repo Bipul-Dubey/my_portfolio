@@ -85,3 +85,33 @@
   opacity: 1;
   transform: translateY(0) scale(1); /* Scale up to give a "pop" effect */
 }
+
+/* view port effect 2 */
+/* Initial state before animation */
+.viewport-2-container-left {
+  opacity: 0;
+  transform: translateX(-70px); /* Start slightly left or right */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.viewport-2-container-right {
+  opacity: 0;
+  transform: translateX(70px); /* Start slightly left or right */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Slide-in from the left */
+.view-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* glass effect 1 */
+.glass-effect-1 {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.1px);
+  -webkit-backdrop-filter: blur(2.1px);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+}
