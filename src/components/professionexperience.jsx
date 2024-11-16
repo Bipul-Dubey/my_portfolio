@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { SITE_DETAILS } from "../constants/siteconstants";
 import AnimatedContainer from "./common/animatedcontainer";
 import SectionHeading from "./common/sectionheading";
 
 export default function ProfessioneEperience() {
+  const [showMore, setShowMore] = useState(false);
   return (
     <div
       style={{
@@ -11,6 +13,7 @@ export default function ProfessioneEperience() {
         flexDirection: "column",
         alignItems: "center",
         backgroundColor: "transparent",
+        gap: "7px",
       }}
     >
       <SectionHeading heading="Professional Experiences" />
@@ -32,7 +35,7 @@ export default function ProfessioneEperience() {
               padding: "8px",
               display: "flex",
               flexWrap: "wrap",
-              gap: "12px",
+              gap: "22px",
             }}
             className={`glass-effect-1 ${
               index % 2 == 0
@@ -44,12 +47,13 @@ export default function ProfessioneEperience() {
             {/* image */}
             <div
               style={{
-                border: "1px solid grey",
                 padding: "6px",
                 borderRadius: "6px",
-                height: "100%",
-                width: "fit-content",
+                height: "100px",
+                width: "100px",
                 display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <img src={item.icon} alt="" height={"55px"} width={"55px"} />
@@ -82,18 +86,32 @@ export default function ProfessioneEperience() {
               >
                 {item.start_date} - {item.end_date}
               </span>
-              <div>
-                {item.responsibilities?.map((resp, respIdx) => (
-                  <div
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                    }}
-                    key={respIdx + "responsibilities"}
-                  >
-                    {resp}
-                  </div>
-                ))}
+              {showMore === index && (
+                <div
+                  style={{
+                    marginTop: "15px",
+                  }}
+                >
+                  {item.responsibilities?.map((resp, respIdx) => (
+                    <div
+                      style={{
+                        fontSize: "16px",
+                        fontWeight: 400,
+                      }}
+                      key={respIdx + "responsibilities"}
+                    >
+                      {resp}
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div
+                className="show-more"
+                onClick={() => {
+                  index === showMore ? setShowMore(null) : setShowMore(index);
+                }}
+              >
+                Show More...
               </div>
             </div>
           </AnimatedContainer>

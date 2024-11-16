@@ -29,7 +29,14 @@ export const SITE_DETAILS = {
       end_date: "Sept (2023)",
       position: "Associate Software Engineer",
       role: "UI Engineer",
-      responsibilities: ["role 1", "role 2"],
+      responsibilities: [
+        "Developed reusable React components.",
+        "Implemented complex UI designs.",
+        "Optimized app performance, reducing load time by 30%.",
+        "Collaborated with backend developers to integrate APIs.",
+        "Mentored junior team members.",
+        "Wrote unit tests to ensure code quality.",
+      ],
       icon: XenonStackIcon,
     },
     {

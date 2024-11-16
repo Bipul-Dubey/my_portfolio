@@ -15,7 +15,20 @@ export default function Header() {
       className="unselectable karla-font"
     >
       <Logo />
-      <GlowButton>{`Let's Connect`}</GlowButton>
+      <GlowButton>
+        <span
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "12px",
+          }}
+        >
+          <i className="fa fa-download"></i>
+          {`Resume`}
+        </span>
+      </GlowButton>
     </div>
   );
 }
