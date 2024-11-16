@@ -1,5 +1,16 @@
+import { SITE_DETAILS } from "../constants/siteconstants";
 import Logo from "./common/logo";
 import GlowButton from "./glowbutton";
+
+const handleDownload = () => {
+  // Create a temporary <a> element for downloading
+  const link = document.createElement("a");
+  link.href = SITE_DETAILS.RESUME_URL;
+  link.download = `${SITE_DETAILS.NAME}.pdf`.replaceAll(" ", "_"); // File name when downloaded
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link); // Clean up after the click
+};
 
 export default function Header() {
   return (
@@ -15,7 +26,7 @@ export default function Header() {
       className="unselectable karla-font"
     >
       <Logo />
-      <GlowButton>
+      <GlowButton onClick={handleDownload}>
         <span
           style={{
             display: "flex",

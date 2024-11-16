@@ -1,8 +1,13 @@
 import "./style.css";
 
-function GlowButton({ children }) {
+function GlowButton({ children, onClick }) {
   return (
-    <button className="glow-on-hover" type="button" style={{}}>
+    <button
+      className="glow-on-hover"
+      type="button"
+      style={{}}
+      onClick={onClick}
+    >
       <span
         style={{
           fontSize: "1.1rem",

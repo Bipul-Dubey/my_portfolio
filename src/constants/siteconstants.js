@@ -3,6 +3,7 @@ import { TECH_STACK_ICONS } from "./techstackicons";
 
 export const SITE_DETAILS = {
   NAME: "Bipul Dubey",
+  RESUME_URL: `https://drive.usercontent.google.com/uc?id=14Ass47trZjIZL-tTUFnSFTmZiPTIodjV&authuser=0&export=download`,
   HERO_SECTION: {
     HEADING:
       "Crafting Digital Experiences | Expertise in Frontend & Backend Development",
