@@ -26,7 +26,7 @@ export default function Header() {
       className="unselectable karla-font"
     >
       <Logo />
-      <GlowButton onClick={handleDownload}>
+      {/* <GlowButton onClick={handleDownload}>
         <span
           style={{
             display: "flex",
@@ -39,7 +39,8 @@ export default function Header() {
           <i className="fa fa-download"></i>
           {`Resume`}
         </span>
-      </GlowButton>
+      </GlowButton> */}
+      <GlowButton>Let's Connect</GlowButton>
     </div>
   );
 }
