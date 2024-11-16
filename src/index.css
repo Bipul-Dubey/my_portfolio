@@ -1,7 +1,8 @@
 * {
-  padding: Opx;
+  padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 #tsparticles {
@@ -39,4 +40,94 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #f9d07d;
+}
+
+/* animation container up and down */
+.up-down-animation {
+  animation: upDown 2s ease-in-out infinite;
+}
+
+@keyframes upDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Move up by 10px */
+  }
+}
+
+.c-technical-skill {
+  flex: 1 1 30%;
+  min-width: 100px;
+  min-height: 50px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+}
+
+.c-technical-skill:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+/* pop out animation */
+/* Initial styles for the container */
+.pop-out-container {
+  opacity: 0;
+  transform: translateY(50px) scale(0.95); /* Scale down slightly */
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+}
+
+/* Add the in-view class when the container is in the viewport */
+.pop-out-container.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Scale up to give a "pop" effect */
+}
+
+/* view port effect 2 */
+/* Initial state before animation */
+.viewport-2-container-left {
+  opacity: 0;
+  transform: translateX(-70px); /* Start slightly left or right */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.viewport-2-container-right {
+  opacity: 0;
+  transform: translateX(70px); /* Start slightly left or right */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Slide-in from the left */
+.view-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* glass effect 1 */
+.glass-effect-1 {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.1px);
+  -webkit-backdrop-filter: blur(2.1px);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+}
+
+/* show more/less */
+.show-more {
+  max-width: fit-content;
+  color: #116bf1;
+  cursor: pointer;
+  margin-top: 17px;
+  border: 1px solid transparent; /* Transparent border added */
+  border-radius: 4px;
+  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.show-more:hover {
+  border: 1px solid #116bf1; /* Visible border on hover */
+  background-color: rgba(17, 107, 241, 0.1); /* Optional background effect */
 }
