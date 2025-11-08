@@ -16,14 +16,14 @@ import {
   SiGo,
 } from "react-icons/si";
 import { FaBrain } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useViewportLevel } from "@/hooks/viewport-level";
 
 const techCategories = [
   {
     label: "Frontend / Languages",
-    radius: 120,
+    baseRadius: 270,
     speed: 2.4,
-    iconSize: 36,
+    iconSize: 48,
     reverse: false,
     items: [
       { icon: SiReact, color: "text-cyan-400" },
@@ -35,9 +35,9 @@ const techCategories = [
   },
   {
     label: "Backend / Tools",
-    radius: 200,
+    baseRadius: 190,
     speed: 1.6,
-    iconSize: 42,
+    iconSize: 48,
     reverse: true,
     items: [
       { icon: SiNodedotjs, color: "text-green-500" },
@@ -52,28 +52,22 @@ const techCategories = [
 ];
 
 export function OrbitingIcons() {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const level = useViewportLevel();
 
-  // Detect screen width
-  useEffect(() => {
-    const checkScreen = () => setIsSmallScreen(window.innerWidth < 768);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
+  if (level === null) return null;
 
   return (
-    <div className="relative flex h-[480px] w-full flex-col items-center justify-center overflow-hidden">
-      {/* Central Icon */}
+    <div className="relative flex h-[510px] lg:h-[600px] w-full flex-col items-center justify-center overflow-hidden">
+      {/* Central Brain Icon */}
       <div className="absolute z-20 flex items-center justify-center w-16 lg:w-20 h-16 lg:h-20 rounded-full bg-linear-to-r from-primary to-accent border border-border shadow-[0_0_25px_rgba(59,130,246,0.5)] backdrop-blur-sm">
         <FaBrain className="text-4xl text-white drop-shadow-lg animate-pulse" />
       </div>
 
-      {/* Map through orbits */}
+      {/* Orbiting Circles */}
       {techCategories.map((category, i) => (
         <OrbitingCircles
           key={i}
-          radius={isSmallScreen ? category.radius - 50 : category.radius}
+          radius={level === 16 ? category.baseRadius - 40 : category.baseRadius}
           speed={category.speed}
           reverse={category.reverse}
           iconSize={category.iconSize}

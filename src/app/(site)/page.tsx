@@ -10,7 +10,9 @@ const HomePage = () => {
       <HeroSection />
       <AboutSection />
       <Projects />
-      <ContactUs />
+      <div className="py-16">
+        <ContactUs />
+      </div>
     </>
   );
 };

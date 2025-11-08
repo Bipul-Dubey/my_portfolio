@@ -2,51 +2,74 @@
 
 import BeamsBackground from "../../ui/beams-background";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, Download } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, ChevronRight } from "lucide-react";
 import { OrbitingIcons } from "./OrbitIcons";
+import Link from "next/link";
+import { AnimatedShinyText } from "@/components/ui/shiny-badge";
+import { cn } from "@/lib/utils";
+import { MorphingText } from "@/components/ui/morphing-text";
 
 const HeroSection = () => {
   return (
     <BeamsBackground>
-      <div className="container mx-auto px-4 md:px-12 lg:px-20 pt-28 lg:pt-0 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left Side — Text */}
-        <div className="space-y-8 text-center lg:text-left">
+      <div
+        className="
+          container px-4 mx-auto 
+          grid grid-cols-1 lg:grid-cols-2 
+          gap-6
+          items-center
+          text-center lg:text-left
+        "
+      >
+        <div
+          className="
+            flex flex-col items-center lg:items-start 
+            justify-center 
+            space-y-8 
+            z-10
+          "
+        >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/80 backdrop-blur-sm rounded-full border border-border text-sm font-medium"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            Available for opportunities
+            <div
+              className={cn(
+                "group rounded-full border border-black/5 bg-neutral-100 text-base text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+              )}
+            >
+              <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span className="ml-2">Available for opportunities</span>
+              </AnimatedShinyText>
+            </div>
           </motion.div>
 
           {/* Name + Title */}
-          <div className="space-y-4">
+          <div className="space-y-4 w-full">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-accent-foreground/80 text-xl md:text-2xl font-medium"
+              className="text-accent-foreground/80 text-xl md:text-2xl lg:text-3xl font-medium"
             >
               {`Hi, I’m Bipul Dubey`}
             </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
-            >
-              Software{" "}
-              <span className="bg-linear-to-r from-[#00c6ff] via-[#7a5fff] to-[#00c6ff] bg-clip-text text-transparent animate-gradient-x [text-shadow:0_0_15px_rgba(124,58,237,0.3)]">
-                Engineer
-              </span>
-            </motion.h1>
+            <div className="h-32 md:h-40 lg:h-44 w-full">
+              <MorphingText
+                texts={[
+                  "Software Engineer",
+                  "Frontend Developer",
+                  "Backend Developer",
+                ]}
+              />
+            </div>
           </div>
 
           {/* Tagline */}
@@ -54,7 +77,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-base md:text-lg text-accent-foreground/80 max-w-lg leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-accent-foreground/80 max-w-lg leading-relaxed"
           >
             Crafting elegant solutions through clean code and innovative
             thinking.{" "}
@@ -68,21 +91,21 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap items-center gap-4"
+            className="flex flex-wrap justify-center lg:justify-start items-center gap-4"
           >
-            <a
-              href="#projects"
+            <Link
+              href="/projects"
               className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30 hover:scale-105"
             >
               View My Work
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-7 py-3 rounded-xl font-semibold border border-border hover:bg-secondary/80 transition-all hover:shadow-lg hover:scale-105"
             >
               Get In Touch
-            </a>
+            </Link>
           </motion.div>
 
           {/* Social Links */}
@@ -90,47 +113,47 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex items-center gap-4 pt-4"
+            className="flex flex-wrap justify-center lg:justify-start items-center gap-4 pt-4"
           >
-            <a
+            <Link
               href="https://github.com/Bipul-Dubey"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110"
             >
               <Github className="w-4 h-4" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://linkedin.com/in/bipul-dubey-34ab8b225"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110"
             >
               <Linkedin className="w-4 h-4" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="mailto:bipuldubeyofficial@gmail.com"
               className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110"
             >
               <Mail className="w-4 h-4" />
-            </a>
+            </Link>
             <div className="w-px h-6 bg-border mx-2" />
-            <a
-              href="#resume"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            <Link
+              href="/resume"
+              className="inline-flex items-center gap-2 px-4 py-2 text-base lg:text-xl font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Download className="w-4 h-4" />
               Resume
-            </a>
+              <ChevronRight className="w-4 lg:w-5 h-4 lg:h-5" />
+            </Link>
           </motion.div>
         </div>
 
-        {/* Right Side — Image */}
+        {/* Right Side — Orbit Icons (visible only on large) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex justify-center md:justify-end"
+          className="hidden lg:flex justify-end"
         >
           <OrbitingIcons />
         </motion.div>

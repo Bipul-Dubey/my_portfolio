@@ -4,7 +4,7 @@ import React from "react";
 
 const ResumePage = () => {
   return (
-    <section className="container mx-auto px-4 md:px-12 lg:px-20 py-12 lg:py-24 flex flex-col items-center">
+    <section className="container px-1 mx-auto py-28 flex flex-col items-center">
       <h2 className="from-foreground to-foreground/80 bg-linear-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl text-center mb-6">
         My Resume
       </h2>

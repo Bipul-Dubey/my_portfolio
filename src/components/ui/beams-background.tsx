@@ -1,244 +1,63 @@
 "use client";
-
-/**
- * @author: @dorian_baffier
- * @description: Beams Background
- * @version: 1.0.0
- * @date: 2025-06-26
- * @license: MIT
- * @website: https://kokonutui.com
- * @github: https://github.com/kokonut-labs/kokonutui
- */
-
-import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import React, { ReactNode } from "react";
 
-interface AnimatedGradientBackgroundProps {
-  className?: string;
-  children?: React.ReactNode;
-  intensity?: "subtle" | "medium" | "strong";
+interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
+  children: ReactNode;
+  showRadialGradient?: boolean;
 }
 
-interface Beam {
-  x: number;
-  y: number;
-  width: number;
-  length: number;
-  angle: number;
-  speed: number;
-  opacity: number;
-  hue: number;
-  pulse: number;
-  pulseSpeed: number;
-}
-
-function createBeam(width: number, height: number, isDarkMode: boolean): Beam {
-  const angle = -35 + Math.random() * 10;
-  const hueBase = isDarkMode ? 190 : 210;
-  const hueRange = isDarkMode ? 70 : 50;
-
-  return {
-    x: Math.random() * width * 1.5 - width * 0.25,
-    y: Math.random() * height * 1.5 - height * 0.25,
-    width: 30 + Math.random() * 60,
-    length: height * 2.5,
-    angle: angle,
-    speed: 0.6 + Math.random() * 1.2,
-    opacity: 0.12 + Math.random() * 0.16,
-    hue: hueBase + Math.random() * hueRange,
-    pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.02 + Math.random() * 0.03,
-  };
-}
-
-export default function BeamsBackground({
-  children,
+const AuroraBackground = ({
   className,
-  intensity = "strong",
-}: AnimatedGradientBackgroundProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const beamsRef = useRef<Beam[]>([]);
-  const animationFrameRef = useRef<number>(0);
-  const MINIMUM_BEAMS = 20;
-  const isDarkModeRef = useRef<boolean>(false);
-
-  const opacityMap = {
-    subtle: 0.7,
-    medium: 0.85,
-    strong: 1,
-  };
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Check for dark mode
-    const updateDarkMode = () => {
-      isDarkModeRef.current =
-        document.documentElement.classList.contains("dark");
-    };
-
-    const observer = new MutationObserver(updateDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    updateDarkMode();
-
-    const updateCanvasSize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(dpr, dpr);
-
-      const totalBeams = MINIMUM_BEAMS * 1.5;
-      beamsRef.current = Array.from({ length: totalBeams }, () =>
-        createBeam(canvas.width, canvas.height, isDarkModeRef.current)
-      );
-    };
-
-    updateCanvasSize();
-    window.addEventListener("resize", updateCanvasSize);
-
-    function resetBeam(beam: Beam, index: number, totalBeams: number) {
-      if (!canvas) return beam;
-
-      const column = index % 3;
-      const spacing = canvas.width / 3;
-
-      const hueBase = isDarkModeRef.current ? 190 : 210;
-      const hueRange = isDarkModeRef.current ? 70 : 50;
-
-      beam.y = canvas.height + 100;
-      beam.x =
-        column * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
-      beam.width = 100 + Math.random() * 100;
-      beam.speed = 0.5 + Math.random() * 0.4;
-      beam.hue = hueBase + (index * hueRange) / totalBeams;
-      beam.opacity = 0.2 + Math.random() * 0.1;
-      return beam;
-    }
-
-    function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
-      ctx.save();
-      ctx.translate(beam.x, beam.y);
-      ctx.rotate((beam.angle * Math.PI) / 180);
-
-      const pulsingOpacity =
-        beam.opacity *
-        (0.8 + Math.sin(beam.pulse) * 0.2) *
-        opacityMap[intensity];
-
-      const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-
-      const saturation = isDarkModeRef.current ? "85%" : "75%";
-      const lightness = isDarkModeRef.current ? "65%" : "45%";
-
-      gradient.addColorStop(
-        0,
-        `hsla(${beam.hue}, ${saturation}, ${lightness}, 0)`
-      );
-      gradient.addColorStop(
-        0.1,
-        `hsla(${beam.hue}, ${saturation}, ${lightness}, ${
-          pulsingOpacity * 0.5
-        })`
-      );
-      gradient.addColorStop(
-        0.4,
-        `hsla(${beam.hue}, ${saturation}, ${lightness}, ${pulsingOpacity})`
-      );
-      gradient.addColorStop(
-        0.6,
-        `hsla(${beam.hue}, ${saturation}, ${lightness}, ${pulsingOpacity})`
-      );
-      gradient.addColorStop(
-        0.9,
-        `hsla(${beam.hue}, ${saturation}, ${lightness}, ${
-          pulsingOpacity * 0.5
-        })`
-      );
-      gradient.addColorStop(
-        1,
-        `hsla(${beam.hue}, ${saturation}, ${lightness}, 0)`
-      );
-
-      ctx.fillStyle = gradient;
-      ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
-      ctx.restore();
-    }
-
-    function animate() {
-      if (!canvas || !ctx) return;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.filter = "blur(35px)";
-
-      const totalBeams = beamsRef.current.length;
-      beamsRef.current.forEach((beam, index) => {
-        beam.y -= beam.speed;
-        beam.pulse += beam.pulseSpeed;
-
-        // Reset beam when it goes off screen
-        if (beam.y + beam.length < -100) {
-          resetBeam(beam, index, totalBeams);
-        }
-
-        drawBeam(ctx, beam);
-      });
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", updateCanvasSize);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      observer.disconnect();
-    };
-  }, [intensity]);
-
+  children,
+  showRadialGradient = true,
+  ...props
+}: AuroraBackgroundProps) => {
   return (
-    <div
-      className={cn(
-        "relative min-h-screen w-full overflow-hidden bg-neutral-100 dark:bg-neutral-950",
-        className
-      )}
-    >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0"
-        style={{ filter: "blur(15px)" }}
-      />
+    <main>
+      <div
+        className={cn(
+          "transition-bg relative flex h-[100vh] flex-col items-center justify-center bg-zinc-50 text-slate-950 dark:bg-zinc-900",
+          className
+        )}
+        {...props}
+      >
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={
+            {
+              "--aurora":
+                "repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)",
+              "--dark-gradient":
+                "repeating-linear-gradient(100deg,#000_0%,#000_7%,transparent_10%,transparent_12%,#000_16%)",
+              "--white-gradient":
+                "repeating-linear-gradient(100deg,#fff_0%,#fff_7%,transparent_10%,transparent_12%,#fff_16%)",
 
-      <motion.div
-        className="absolute inset-0 bg-neutral-900/5 dark:bg-neutral-950/5"
-        animate={{
-          opacity: [0.05, 0.15, 0.05],
-        }}
-        transition={{
-          duration: 10,
-          ease: "easeInOut",
-          repeat: Number.POSITIVE_INFINITY,
-        }}
-        style={{
-          backdropFilter: "blur(50px)",
-        }}
-      />
+              "--blue-300": "#93c5fd",
+              "--blue-400": "#60a5fa",
+              "--blue-500": "#3b82f6",
+              "--indigo-300": "#a5b4fc",
+              "--violet-200": "#ddd6fe",
+              "--black": "#000",
+              "--white": "#fff",
+              "--transparent": "transparent",
+            } as React.CSSProperties
+          }
+        >
+          <div
+            //   I'm sorry but this is what peak developer performance looks like // trigger warning
+            className={cn(
+              `after:animate-aurora pointer-events-none absolute -inset-[10px] [background-image:var(--white-gradient),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] opacity-50 blur-[10px] invert filter will-change-transform [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)] [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)] [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] after:[background-size:200%,_100%] after:[background-attachment:fixed] after:mix-blend-difference after:content-[""] dark:[background-image:var(--dark-gradient),var(--aurora)] dark:invert-0 after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
 
-      <div className="relative z-10 flex min-h-screen w-full items-center justify-center">
+              showRadialGradient &&
+                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+            )}
+          ></div>
+        </div>
         {children}
       </div>
-    </div>
+    </main>
   );
-}
+};
+
+export default AuroraBackground;

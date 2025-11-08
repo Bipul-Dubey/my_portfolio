@@ -70,7 +70,7 @@ const features = [
     name: "Career Journey",
     description:
       "I hold a Master's degree in Computer Applications and have 3+ years of hands-on experience building web applications and APIs using modern frameworks and cloud technologies. My journey has been driven by curiosity, growth, and creating scalable digital solutions.",
-    href: "/journey",
+    href: "/about?id=experience",
     cta: "View Experience",
     className: "col-span-3 lg:col-span-2",
     background: (
@@ -89,21 +89,23 @@ const features = [
 
 const AboutSection = () => {
   return (
-    <section className="container mx-auto px-4 md:px-12 lg:px-20 py-12 lg:py-24">
-      <h2 className="from-foreground to-foreground/80 bg-linear-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl text-center mb-4">
-        About Me
-      </h2>
+    <section className="grid place-items-center px-4 md:px-12 lg:px-20 py-12 lg:py-24">
+      <div className="container mx-auto">
+        <h2 className="bg-clip-text text-4xl font-bold tracking-tight text-accent-foreground md:text-5xl text-center mb-4">
+          About Me
+        </h2>
 
-      <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-        A quick snapshot of who I am, what I do, and the tools that power my
-        work.
-      </p>
+        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+          A quick snapshot of who I am, what I do, and the tools that power my
+          work.
+        </p>
 
-      <BentoGrid>
-        {features.map((feature, idx) => (
-          <BentoCard key={idx} {...feature} />
-        ))}
-      </BentoGrid>
+        <BentoGrid>
+          {features.map((feature, idx) => (
+            <BentoCard key={idx} {...feature} />
+          ))}
+        </BentoGrid>
+      </div>
     </section>
   );
 };
