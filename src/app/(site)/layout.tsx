@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   creator: "Bipul Dubey",
   metadataBase: new URL(BASE_URL),
 
-  // ✅ Favicon & App Icons
+  // ✅ Favicon and App Icons
   icons: {
     icon: [
       {
