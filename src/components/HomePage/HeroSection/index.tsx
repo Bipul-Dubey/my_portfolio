@@ -2,12 +2,13 @@
 
 import BeamsBackground from "../../ui/beams-background";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, ChevronRight } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { OrbitingIcons } from "./OrbitIcons";
 import Link from "next/link";
 import { AnimatedShinyText } from "@/components/ui/shiny-badge";
 import { cn } from "@/lib/utils";
 import { MorphingText } from "@/components/ui/morphing-text";
+import { ResumeButton } from "@/components/common/ResumeButton";
 
 const HeroSection = () => {
   return (
@@ -138,13 +139,7 @@ const HeroSection = () => {
               <Mail className="w-4 h-4" />
             </Link>
             <div className="w-px h-6 bg-border mx-2" />
-            <Link
-              href="/resume"
-              className="inline-flex items-center gap-2 px-4 py-2 text-base lg:text-xl font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Resume
-              <ChevronRight className="w-4 lg:w-5 h-4 lg:h-5" />
-            </Link>
+            <ResumeButton />
           </motion.div>
         </div>
 

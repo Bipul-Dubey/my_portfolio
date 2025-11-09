@@ -9,12 +9,14 @@ interface ImageCarouselProps {
   images: string[];
   interval?: number;
   className?: string;
+  isModal?: boolean;
 }
 
 export function ImageCarousel({
   images,
   interval = 3500,
   className,
+  isModal = false,
 }: ImageCarouselProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -90,7 +92,12 @@ export function ImageCarousel({
       </div>
 
       {/* Pagination Dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-2">
+      <div
+        className={cn(
+          "absolute bottom-3 left-1/2 -translate-x-1/2 z-20  items-center justify-center gap-2",
+          isModal ? "flex" : "hidden md:flex"
+        )}
+      >
         {images.map((_, i) => (
           <div
             key={i}

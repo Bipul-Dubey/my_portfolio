@@ -5,21 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
-// ✅ Utility to dynamically calculate experience
-function getExperience(startDate: string) {
-  const start = new Date(startDate);
-  const now = new Date();
-
-  const diffInMonths =
-    (now.getFullYear() - start.getFullYear()) * 12 +
-    (now.getMonth() - start.getMonth());
-
-  const years = Math.floor(diffInMonths / 12);
-  const months = diffInMonths % 12;
-
-  return { years, months };
-}
+import { ResumeButton } from "../common/ResumeButton";
+import { getExperience } from "@/lib/utils";
 
 // ✅ Typewriter animation (unchanged)
 const Typewriter = ({ text }: { text: string }) => {
@@ -57,9 +44,7 @@ const Typewriter = ({ text }: { text: string }) => {
 };
 
 const Introduction = () => {
-  // ✅ Dynamically calculate experience
-  const { years: experienceYears, months: experienceMonths } =
-    getExperience("2023-01-17");
+  const { years: experienceYears, months: experienceMonths } = getExperience();
 
   const contactLinks = [
     {
@@ -87,7 +72,7 @@ const Introduction = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="group relative flex flex-col justify-between bg-linear-to-b from-background/70 to-background/90 rounded-3xl shadow-lg overflow-hidden backdrop-blur-md"
+          className="group relative flex min-w-96 flex-col h-fit justify-between bg-linear-to-b from-background/70 to-background/90 rounded-3xl shadow-lg overflow-hidden backdrop-blur-md"
         >
           <div className="absolute inset-0 rounded-3xl bg-linear-to-tr from-primary/15 via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none" />
 
@@ -138,17 +123,22 @@ const Introduction = () => {
 
             {/* ✅ Contact Me Button */}
             <motion.div
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="mt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-start gap-3 sm:gap-4 w-full"
             >
+              {/* Contact Button */}
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center w-full gap-2 rounded-xl bg-primary text-white px-4 py-2.5 font-medium shadow-md hover:shadow-lg transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-white px-5 py-2.5 font-medium shadow-md hover:shadow-lg transition-all duration-300 w-full sm:flex-1"
               >
-                Contact Me
                 <Mail className="w-4 h-4" />
+                Contact Me
               </Link>
+
+              {/* Resume Button */}
+              <ResumeButton className="w-full sm:flex-1" />
             </motion.div>
           </div>
         </motion.div>

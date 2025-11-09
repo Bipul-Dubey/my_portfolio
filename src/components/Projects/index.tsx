@@ -9,6 +9,7 @@ import { ProjectsList } from "@/constants/projects";
 import { TProject } from "@/types";
 import { ArrowUpRight } from "lucide-react";
 import { ProjectCard } from "./ProjectCard";
+import { SectionHeader } from "../common/SectionHeader";
 
 interface ProjectsProps {
   isPage?: boolean;
@@ -39,21 +40,14 @@ export default function Projects({ isPage = false }: ProjectsProps) {
           isPage ? "pt-28" : ""
         )}
       >
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="from-foreground to-foreground/80 bg-linear-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl text-center mb-4"
-        >
-          {`What I've Built`}
-        </motion.h2>
-
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          {isPage
-            ? "Explore my professional, freelance, and personal projects — filter by tech, category, or search across them."
-            : "A glimpse of the projects I've crafted — from scalable backend systems to modern frontend experiences."}
-        </p>
+        <SectionHeader
+          title={`What I've Built`}
+          description={
+            isPage
+              ? "Explore my professional, freelance, and personal projects — filter by tech, category, or search across them."
+              : "A glimpse of the projects I've crafted — from scalable backend systems to modern frontend experiences."
+          }
+        />
 
         {/* Cards */}
         <motion.div

@@ -11,6 +11,7 @@ export type TProject = {
 
 export type TTechnology = {
   name: string;
-  icon: IconType;
-  color: string;
+  icon?: IconType;
+  svg?: string;
+  color?: string;
 };

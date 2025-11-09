@@ -1,8 +1,10 @@
 "use client";
 
+import { getFormattedExperience } from "@/lib/utils";
 import { BentoCard, BentoGrid } from "../ui/bento-grid";
 import { Mail, Terminal, Layers, GraduationCap } from "lucide-react";
 import Image from "next/image";
+import { SectionHeader } from "../common/SectionHeader";
 
 const features = [
   {
@@ -20,6 +22,7 @@ const features = [
           alt="About Bipul Dubey"
           fill
           className="object-cover opacity-60 scale-x-[-1]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-tr from-background via-background/60 to-transparent" />
       </div>
@@ -40,6 +43,7 @@ const features = [
           alt="contact Bipul Dubey"
           fill
           className="object-cover opacity-60"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-tr from-background via-background/60 to-transparent" />
       </div>
@@ -60,6 +64,7 @@ const features = [
           alt="web development background"
           fill
           className="object-cover opacity-60"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-tr from-background via-background/70 to-transparent" />
       </div>
@@ -68,8 +73,7 @@ const features = [
   {
     Icon: GraduationCap,
     name: "Career Journey",
-    description:
-      "I hold a Master's degree in Computer Applications and have 3+ years of hands-on experience building web applications and APIs using modern frameworks and cloud technologies. My journey has been driven by curiosity, growth, and creating scalable digital solutions.",
+    description: `I hold a Master's degree in Computer Applications and have ${getFormattedExperience()} of hands-on experience building web applications and APIs using modern frameworks and cloud technologies. My journey has been driven by curiosity, growth, and creating scalable digital solutions.`,
     href: "/about?id=experience",
     cta: "View Experience",
     className: "col-span-3 lg:col-span-2",
@@ -80,6 +84,7 @@ const features = [
           alt="Career Journey"
           fill
           className="object-cover opacity-60"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-tr from-background via-background/70 to-transparent" />
       </div>
@@ -91,14 +96,10 @@ const AboutSection = () => {
   return (
     <section className="grid place-items-center px-4 md:px-12 lg:px-20 py-12 lg:py-24">
       <div className="container mx-auto">
-        <h2 className="bg-clip-text text-4xl font-bold tracking-tight text-accent-foreground md:text-5xl text-center mb-4">
-          About Me
-        </h2>
-
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          A quick snapshot of who I am, what I do, and the tools that power my
-          work.
-        </p>
+        <SectionHeader
+          title="About Me"
+          description="A quick snapshot of who I am, what I do, and the tools that power my work."
+        />
 
         <BentoGrid>
           {features.map((feature, idx) => (

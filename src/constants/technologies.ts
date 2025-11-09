@@ -1,4 +1,5 @@
 import { TTechnology } from "@/types";
+import { FaAws } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiReact,
@@ -7,6 +8,22 @@ import {
   SiPostgresql,
   SiMongodb,
   SiNodedotjs,
+  SiTypescript,
+  SiJavascript,
+  SiRedux,
+  SiTailwindcss,
+  SiAntdesign,
+  SiGraphql,
+  SiGoland,
+  SiStyledcomponents,
+  SiJira,
+  SiGit,
+  SiPostman,
+  SiRedis,
+  SiClerk,
+  SiExpress,
+  SiAmazondynamodb,
+  SiAwsamplify,
 } from "react-icons/si";
 
 export const technologies: Record<string, TTechnology> = {
@@ -21,6 +38,61 @@ export const technologies: Record<string, TTechnology> = {
   MongoDB: { name: "MongoDB", icon: SiMongodb, color: "text-emerald-500" },
   Nodejs: { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
   Docker: { name: "Docker", icon: SiDocker, color: "text-blue-400" },
+  TypeScript: {
+    name: "TypeScript",
+    icon: SiTypescript,
+    color: "text-blue-600",
+  },
+  JavaScript: {
+    name: "JavaScript",
+    icon: SiJavascript,
+    color: "text-yellow-500",
+  },
+  Redux: { name: "Redux", icon: SiRedux, color: "text-purple-400" },
+  TailwindCSS: {
+    name: "Tailwind CSS",
+    icon: SiTailwindcss,
+    color: "text-teal-400",
+  },
+  MUI: {
+    name: "Material UI",
+    svg: "/icons/mui.svg",
+    color: "text-indigo-500",
+  },
+  AntDesign: { name: "Ant Design", icon: SiAntdesign, color: "text-blue-500" },
+  AWS: { name: "AWS", icon: FaAws, color: "text-yellow-400" },
+  GraphQL: { name: "GraphQL", icon: SiGraphql, color: "text-pink-500" },
+  Golang: { name: "Golang", icon: SiGoland, color: "text-blue-400" },
+  StyledComponents: {
+    name: "Styled Components",
+    icon: SiStyledcomponents,
+    color: "text-pink-400",
+  },
+  Jira: { name: "Jira", icon: SiJira, color: "text-blue-700" },
+  Git: { name: "Git", icon: SiGit, color: "text-orange-500" },
+  Postman: { name: "Postman", icon: SiPostman, color: "text-orange-400" },
+  Redis: { name: "Redis", icon: SiRedis, color: "text-red-600" },
+  DynamoDB: {
+    name: "DynamoDB",
+    icon: SiAmazondynamodb,
+    color: "text-blue-500",
+  },
+  // Zustand: { name: "Zustand", icon: SiZustand, color: "text-yellow-600" },
+  WebSocket: {
+    name: "WebSocket",
+    svg: "/icons/socket.svg",
+    color: "text-blue-500",
+  },
+  // Recharts: { name: "Recharts", icon: SiRecharts, color: "text-teal-500" },
+  Clerk: { name: "Clerk", icon: SiClerk, color: "text-indigo-600" },
+  Express: { name: "Express.js", icon: SiExpress, color: "text-gray-800" },
+  ReactIntl: { name: "React Intl", icon: SiReact, color: "text-cyan-400" },
+  Zod: { name: "Zod", icon: SiFastapi, color: "text-green-600" },
+  AWSAmplify: {
+    name: "AWS Amplify",
+    icon: SiAwsamplify,
+    color: "text-yellow-400",
+  },
 };
 
 export type TechnologyKey = keyof typeof technologies;

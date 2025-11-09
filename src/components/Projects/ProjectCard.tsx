@@ -14,8 +14,8 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { TProject } from "@/types";
-import { technologies } from "@/constants/technologies";
 import { ImageCarousel } from "./ProjectImages";
+import { TechnologyIcons } from "./TechnologyIcons";
 
 type MorphingProjectCardProps = {
   project: TProject;
@@ -69,21 +69,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
           </p>
 
           {/* Tech icons (short preview) */}
-          <div className="flex flex-wrap gap-2 pt-3">
-            {project.technology?.slice(0, 4).map((techKey, i) => {
-              const tech = technologies[techKey];
-              const Icon = tech?.icon;
-              return (
-                Icon && (
-                  <Icon
-                    key={i}
-                    className={`${tech.color} w-5 h-5 opacity-80`}
-                    title={tech?.name}
-                  />
-                )
-              );
-            })}
-          </div>
+          <TechnologyIcons list={project.technology} />
         </div>
       </MorphingDialogTrigger>
 
@@ -99,7 +85,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
         >
           {/* Image */}
           <div className="relative">
-            <ImageCarousel images={project.images} />
+            <ImageCarousel images={project.images} isModal />
 
             {/* ✅ Category — bottom-right corner */}
             <MorphingDialogSubtitle
@@ -113,7 +99,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
           </div>
 
           {/* Content */}
-          <div className="p-6 sm:p-8 space-y-5 md:space-y-6">
+          <div className="p-6 space-y-5">
             {/* Title */}
             <MorphingDialogTitle className="text-2xl sm:text-3xl font-semibold text-foreground">
               {project.title}
@@ -127,7 +113,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
                 animate: { opacity: 1, y: 0 },
                 exit: { opacity: 0, y: 20 },
               }}
-              className="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-3"
+              className="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-1"
             >
               {Array.isArray(project.description) ? (
                 project.description.map((d, i) => <p key={i}>{d}</p>)
@@ -137,30 +123,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
             </MorphingDialogDescription>
 
             {/* Tech Stack */}
-            {project.technology?.length > 0 && (
-              <div className="pt-3">
-                <h4 className="text-sm font-medium text-foreground mb-2">
-                  Technologies
-                </h4>
-                <div className="flex flex-wrap gap-3">
-                  {project.technology.map((techKey, i) => {
-                    const tech = technologies[techKey];
-                    const Icon = tech?.icon;
-                    return (
-                      Icon && (
-                        <div
-                          key={i}
-                          className="flex items-center gap-2 text-sm text-muted-foreground"
-                        >
-                          <Icon className={`${tech.color} w-5 h-5`} />
-                          <span>{tech.name}</span>
-                        </div>
-                      )
-                    );
-                  })}
-                </div>
-              </div>
-            )}
+            <TechnologyIcons list={project.technology} detailed />
 
             {/* Links */}
             {project.link && (

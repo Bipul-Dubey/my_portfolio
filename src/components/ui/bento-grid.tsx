@@ -1,14 +1,14 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-
+import { motion, MotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
-  children: ReactNode;
+interface BentoGridProps extends MotionProps {
+  children: React.ReactNode;
   className?: string;
 }
-
 interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string;
   className: string;
@@ -20,16 +20,32 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
   return (
-    <div
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
+        "grid w-full auto-rows-[22rem] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4",
         className
       )}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
@@ -76,10 +92,10 @@ const BentoCard = ({
           size="sm"
           className="pointer-events-auto p-0"
         >
-          <a href={href}>
+          <Link href={href} className="flex items-center">
             {cta}
             <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-          </a>
+          </Link>
         </Button>
       </div>
     </div>
@@ -95,14 +111,14 @@ const BentoCard = ({
         size="sm"
         className="pointer-events-auto p-0"
       >
-        <a href={href}>
+        <Link href={href} className="flex items-center">
           {cta}
           <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-        </a>
+        </Link>
       </Button>
     </div>
 
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/3 group-hover:dark:bg-neutral-800/10" />
   </div>
 );
 
