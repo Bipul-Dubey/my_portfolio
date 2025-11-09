@@ -74,7 +74,7 @@ const features = [
     Icon: GraduationCap,
     name: "Career Journey",
     description: `I hold a Master's degree in Computer Applications and have ${getFormattedExperience()} of hands-on experience building web applications and APIs using modern frameworks and cloud technologies. My journey has been driven by curiosity, growth, and creating scalable digital solutions.`,
-    href: "/about?id=experience",
+    href: "/about",
     cta: "View Experience",
     className: "col-span-3 lg:col-span-2",
     background: (
