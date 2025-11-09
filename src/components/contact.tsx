@@ -40,8 +40,8 @@ export default function ContactUs() {
   const isInView = useInView(formRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="relative w-full overflow-hidden py-8">
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
+    <section className="relative w-full overflow-hidden">
+      <div className="relative z-10 container mx-auto px-4 py-16 lg:py-28">
         {/* Main Card Container */}
         <div className="border-border/40 bg-secondary/20 mx-auto max-w-6xl overflow-hidden rounded-[28px] border shadow-xl backdrop-blur-md">
           <div className="grid md:grid-cols-2">

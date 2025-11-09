@@ -36,7 +36,7 @@ export default function Projects({ isPage = false }: ProjectsProps) {
       <section
         id="projects"
         className={cn(
-          "container px-4 mx-auto py-16 lg:py-28",
+          "container mx-auto px-4 py-16 lg:py-28",
           isPage ? "pt-28" : ""
         )}
       >
@@ -74,14 +74,22 @@ export default function Projects({ isPage = false }: ProjectsProps) {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="flex items-center justify-center border border-dashed border-border rounded-2xl p-6 hover:bg-accent/10 transition-all cursor-pointer bg-background text-primary font-medium"
+              className={cn(
+                "flex items-center justify-center border border-dashed border-border rounded-2xl p-6",
+                "bg-background text-primary font-medium cursor-pointer",
+                "transition-all duration-300 hover:border-transparent hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.25)]",
+                "relative overflow-hidden group"
+              )}
             >
+              {/* Gradient glow effect */}
+              <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-primary/15 via-primary/25 to-primary/15 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 pointer-events-none" />
+
               <Link
                 href="/projects"
-                className="flex items-center gap-2 text-lg group"
+                className="relative flex items-center gap-2 text-lg font-semibold group text-primary z-10"
               >
                 See more projects
-                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
           )}

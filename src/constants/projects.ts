@@ -3,7 +3,20 @@ import type { TechnologyKey } from "./technologies";
 
 export const ProjectsList: (TProject & { technology: TechnologyKey[] })[] = [
   {
-    title: "AI-Based Platforms (Internal)",
+    title: "NGO Awareness & Outreach Platform",
+    category: "Freelance",
+    description: [
+      "Developed a modern static website for an NGO to showcase its mission, ongoing initiatives, and impact stories.",
+      "Designed clean, accessible layouts using Tailwind CSS and Framer Motion for smooth, engaging animations.",
+      "Implemented responsive design to ensure an optimal experience across devices — improving engagement and reach.",
+      "Deployed and optimized the site on Netlify for fast performance, SEO readiness, and easy content updates.",
+    ],
+    images: ["/projects/freelance/aadarshnavjyoti/img_1.png"],
+    technology: ["Nextjs", "Tailwind", "FramerMotion", "Netlify"],
+    link: "https://aadarshnavjyoti.com/",
+  },
+  {
+    title: "AI-Based Platforms",
     category: "Professional",
     description: [
       "Built AI-powered web platforms with real-time chat, analytics, and live data insights.",
@@ -11,11 +24,7 @@ export const ProjectsList: (TProject & { technology: TechnologyKey[] })[] = [
       "Developed modular, responsive features using Next.js App Router, Shadcn UI, Zustand, and Recharts for dynamic dashboards.",
       "Ensured accessibility and optimal navigation for smooth user experience across all devices.",
     ],
-    images: [
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
-      "https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=1200&q=80",
-      "https://images.unsplash.com/photo-1527430253228-e93688616381?w=1200&q=80",
-    ],
+    images: ["/projects/professional/ai_platform/img_1.png"],
     technology: [
       "Nextjs",
       "TypeScript",
@@ -36,11 +45,7 @@ export const ProjectsList: (TProject & { technology: TechnologyKey[] })[] = [
       "Integrated authentication with Clerk and role-based access control for secure operations.",
       "Worked with AWS Amplify, DynamoDB, React.js, and MUI/Ant Design for scalable UI and cloud integration.",
     ],
-    images: [
-      "https://images.unsplash.com/photo-1603791452906-b9f8fb2e7d3a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1584697964403-5d7f57b3c7f2?w=1200&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
-    ],
+    images: ["/projects/professional/whatsapp_campaign/img_1.jpg"],
     technology: [
       "Express",
       "GraphQL",
@@ -67,9 +72,8 @@ export const ProjectsList: (TProject & { technology: TechnologyKey[] })[] = [
       "Optimized API calls with debouncing and pagination for reduced server load and enhanced responsiveness.",
     ],
     images: [
-      "https://images.unsplash.com/photo-1581093588401-22aa06f2a7b7?w=1200&q=80",
-      "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=1200&q=80",
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80",
+      "/projects/professional/transport_order/img_1.jpg",
+      "/projects/professional/transport_order/img_2.jpg",
     ],
     technology: [
       "Nextjs",

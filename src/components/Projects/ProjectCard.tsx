@@ -21,6 +21,26 @@ type MorphingProjectCardProps = {
   project: TProject;
 };
 
+export const ProjectLink = ({ link }: { link?: string }) => {
+  return (
+    <>
+      {link && (
+        <div className="flex items-end flex-wrap gap-5 pt-2 ">
+          {link && (
+            <Link
+              href={link}
+              target="_blank"
+              className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+            >
+              Live Demo <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          )}
+        </div>
+      )}
+    </>
+  );
+};
+
 export function ProjectCard({ project }: MorphingProjectCardProps) {
   return (
     <MorphingDialog
@@ -70,6 +90,8 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
 
           {/* Tech icons (short preview) */}
           <TechnologyIcons list={project.technology} />
+
+          <ProjectLink link={project.link} />
         </div>
       </MorphingDialogTrigger>
 
@@ -85,7 +107,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
         >
           {/* Image */}
           <div className="relative">
-            <ImageCarousel images={project.images} isModal />
+            <ImageCarousel images={project.images} />
 
             {/* ✅ Category — bottom-right corner */}
             <MorphingDialogSubtitle
@@ -126,19 +148,7 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
             <TechnologyIcons list={project.technology} detailed />
 
             {/* Links */}
-            {project.link && (
-              <div className="flex items-center flex-wrap gap-5 pt-4">
-                {project.link && (
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
-                  >
-                    Live Demo <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                )}
-              </div>
-            )}
+            <ProjectLink link={project.link} />
           </div>
 
           {/* Close Button */}

@@ -94,7 +94,7 @@ const features = [
 
 const AboutSection = () => {
   return (
-    <section className="grid place-items-center px-4 md:px-12 lg:px-20 py-12 lg:py-24">
+    <section className="grid place-items-center px-4 py-16 lg:py-28">
       <div className="container mx-auto">
         <SectionHeader
           title="About Me"

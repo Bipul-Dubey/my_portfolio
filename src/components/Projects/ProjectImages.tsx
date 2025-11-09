@@ -2,28 +2,26 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { MorphingDialogImage } from "../ui/morphing-dialog";
 
 interface ImageCarouselProps {
   images: string[];
   interval?: number;
   className?: string;
-  isModal?: boolean;
 }
 
 export function ImageCarousel({
   images,
   interval = 3500,
   className,
-  isModal = false,
 }: ImageCarouselProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [paused, setPaused] = useState(false);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.4 }); // 👈 start animating when ~40% visible
+  const isInView = useInView(containerRef, { once: false, amount: 0.7 });
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Auto slide only when visible & not paused
@@ -54,14 +52,15 @@ export function ImageCarousel({
     <div
       ref={containerRef}
       className={cn(
-        "relative w-full overflow-hidden rounded-2xl group select-none bg-black/5 dark:bg-white/5",
+        "relative w-full overflow-hidden rounded-2xl group select-none bg-black/5 dark:bg-white/5 p-1",
         className
       )}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       {/* Image Wrapper */}
-      <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-2xl">
+      {/* ✅ Image Section */}
+      <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-muted/10">
         <AnimatePresence custom={direction} mode="popLayout">
           <motion.div
             key={images[index]}
@@ -76,17 +75,15 @@ export function ImageCarousel({
             }}
             className="absolute inset-0 will-change-transform"
           >
-            <Image
+            <MorphingDialogImage
               src={images[index]}
-              alt={`Slide ${index + 1}`}
-              loader={() => images[index]}
-              fill
-              className="object-cover rounded-2xl transition-transform duration-700 group-hover:scale-[1.02]"
-              priority={index === 0}
+              alt={`Project image ${index + 1}`}
+              className="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-[1.02]"
+              style={{ aspectRatio: "16/9" }}
             />
 
-            {/* Dark Overlay for visibility */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/15 to-transparent rounded-2xl pointer-events-none" />
+            {/* Overlay for better text contrast */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent rounded-2xl pointer-events-none" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -94,8 +91,7 @@ export function ImageCarousel({
       {/* Pagination Dots */}
       <div
         className={cn(
-          "absolute bottom-3 left-1/2 -translate-x-1/2 z-20  items-center justify-center gap-2",
-          isModal ? "flex" : "hidden md:flex"
+          "absolute bottom-6 flex left-1/2 -translate-x-1/2 z-20 items-center justify-center gap-2"
         )}
       >
         {images.map((_, i) => (
