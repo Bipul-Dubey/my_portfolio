@@ -17,28 +17,45 @@ function NavItem({
   name,
   href,
   Icon,
+  hasHovered,
+  setHasHovered,
 }: {
   name: string;
   href: string;
   Icon: React.ComponentType<{ className?: string }>;
+  hasHovered: boolean;
+  setHasHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const isContact = name.toLowerCase() === "contact";
+
   const pathVariants = {
     rest: { pathLength: 0 },
     hover: {
       pathLength: 1,
       transition: { duration: 0.5, ease: easeInOut },
     },
+    active: {
+      pathLength: [0, 1, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: easeInOut,
+      },
+    },
   };
 
   const wavePath =
     "M0,5 C20,0 40,10 60,5 S100,10 120,5 S160,10 180,5 S220,10 240,5";
 
+  const handleHoverStart = () => setHasHovered(true);
+
   return (
     <motion.div
       className="relative group"
       initial="rest"
-      animate="rest"
+      animate={isContact && !hasHovered ? "active" : "rest"}
       whileHover="hover"
+      onHoverStart={handleHoverStart}
     >
       <Link
         href={href}
@@ -49,7 +66,6 @@ function NavItem({
         <span>{name}</span>
       </Link>
 
-      {/* SVG wave underline */}
       <svg
         viewBox="0 0 240 15"
         xmlns="http://www.w3.org/2000/svg"
@@ -59,8 +75,8 @@ function NavItem({
         <motion.path
           d={wavePath}
           fill="transparent"
-          stroke="var(--foreground, #111)"
-          strokeWidth={2}
+          stroke={isContact ? "#1d4ed8" : "var(--foreground, #111)"}
+          strokeWidth={isContact ? 3 : 2}
           strokeLinecap="round"
           variants={pathVariants}
         />
@@ -73,7 +89,22 @@ export default function Header() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hasHovered, setHasHovered] = useState(false);
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (hasHovered) {
+      if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+      hoverTimeout.current = setTimeout(() => {
+        setHasHovered(false);
+      }, 3000); // ⏳ restart wave after 3s
+    }
+
+    return () => {
+      if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+    };
+  }, [hasHovered]);
 
   useEffect(() => {
     if (typeof window !== "undefined") setTimeout(() => setMounted(true), 50);
@@ -113,7 +144,6 @@ export default function Header() {
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
       className="fixed top-5 left-1/2 z-50 flex items-center justify-between px-6 py-3 border border-border -translate-x-1/2"
     >
-      {/* Logo */}
       <Link href="/" className="flex items-center gap-2">
         <div className="w-8 h-8 relative">
           <Image src="/site_icon.png" alt="logo" width={100} height={100} />
@@ -129,6 +159,8 @@ export default function Header() {
             name={link.name}
             href={link.href}
             Icon={link.icon}
+            hasHovered={hasHovered}
+            setHasHovered={setHasHovered}
           />
         ))}
       </nav>
