@@ -66,6 +66,7 @@ const HeroSection = () => {
               <MorphingText
                 texts={[
                   "Software Engineer",
+                  "Full-Stack developer",
                   "Frontend Developer",
                   "Backend Developer",
                 ]}

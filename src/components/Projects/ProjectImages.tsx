@@ -58,9 +58,8 @@ export function ImageCarousel({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Image Wrapper */}
-      {/* ✅ Image Section */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-muted/10">
+      {/* Image */}
+      <div className="relative w-full aspect-video overflow-hidden rounded-2xl bg-muted/10 will-change-transform">
         <AnimatePresence custom={direction} mode="popLayout">
           <motion.div
             key={images[index]}
@@ -73,17 +72,16 @@ export function ImageCarousel({
               x: { type: "spring", stiffness: 80, damping: 20 },
               opacity: { duration: 0.25 },
             }}
-            className="absolute inset-0 will-change-transform"
+            className="absolute inset-0"
           >
             <MorphingDialogImage
               src={images[index]}
               alt={`Project image ${index + 1}`}
-              className="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-[1.02]"
-              style={{ aspectRatio: "16/9" }}
+              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-[1.02]"
+              style={{ borderRadius: "inherit" }}
             />
 
-            {/* Overlay for better text contrast */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent rounded-2xl pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -101,7 +99,7 @@ export function ImageCarousel({
             tabIndex={0}
             aria-label={`Go to slide ${i + 1}`}
             onClick={(e) => {
-              e.preventDefault();
+              e.stopPropagation();
               setDirection(i > index ? 1 : -1);
               setIndex(i);
             }}

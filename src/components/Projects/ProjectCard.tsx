@@ -52,16 +52,16 @@ export function ProjectCard({ project }: MorphingProjectCardProps) {
     >
       {/* --- Project Card (Trigger) --- */}
       <MorphingDialogTrigger
-        style={{ borderRadius: "20px" }}
+        style={{ borderRadius: "20px", borderTop: "0px" }}
         className="
           group relative flex flex-col overflow-hidden
           border border-border bg-background
           hover:shadow-lg transition-all duration-300
-          rounded-2xl cursor-pointer
+          rounded-2xl cursor-pointer rounded-t-none
         "
       >
         {/* Image */}
-        <div className="relative h-52 w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden">
           <ImageCarousel images={project.images} />
 
           {/* ✅ Category Tag — bottom-right corner */}

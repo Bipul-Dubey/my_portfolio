@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-
 import { cn } from "@/lib/utils";
 
 const morphTime = 1.5;
@@ -31,8 +30,11 @@ const useMorphingText = (texts: string[]) => {
       )}px)`;
       current1.style.opacity = `${Math.pow(invertedFraction, 0.4) * 100}%`;
 
-      current1.textContent = texts[textIndexRef.current % texts.length];
-      current2.textContent = texts[(textIndexRef.current + 1) % texts.length];
+      const currentText = texts[textIndexRef.current % texts.length];
+      const nextText = texts[(textIndexRef.current + 1) % texts.length];
+
+      current1.innerHTML = colorizeText(currentText);
+      current2.innerHTML = colorizeText(nextText);
     },
     [texts]
   );
@@ -83,12 +85,16 @@ const useMorphingText = (texts: string[]) => {
     };
 
     animate();
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
+    return () => cancelAnimationFrame(animationFrameId);
   }, [doMorph, doCooldown]);
 
   return { text1Ref, text2Ref };
+};
+
+// ✅ Colorize first and second words dynamically
+const colorizeText = (text: string): string => {
+  const [first, ...rest] = text.split(" ");
+  return `<span class="text-blue-700">${first}</span> ${rest.join(" ")}`;
 };
 
 interface MorphingTextProps {

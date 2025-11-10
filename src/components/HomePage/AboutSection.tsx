@@ -16,13 +16,14 @@ const features = [
     cta: "More about me",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <div className="absolute inset-0 overflow-hidden rounded-xl">
+      <div className="absolute inset-0 overflow-hidden rounded-xl bg-gray-100/90">
         <Image
           src="/about_bg_1.jpg"
           alt="About Bipul Dubey"
           fill
-          className="object-cover opacity-60 scale-x-[-1]"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain object-center opacity-80 scale-x-[-1]"
+          sizes="100vw"
+          priority
         />
         <div className="absolute inset-0 bg-linear-to-tr from-background via-background/60 to-transparent" />
       </div>
@@ -83,7 +84,7 @@ const features = [
           src="/about_bg_4.png"
           alt="Career Journey"
           fill
-          className="object-cover opacity-60"
+          className="object-fit opacity-60"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-tr from-background via-background/70 to-transparent" />
