@@ -98,6 +98,34 @@ export const metadata: Metadata = {
 
   // ✅ Manifest (for PWA)
   manifest: "/favicon_io/site.webmanifest",
+
+  other: {
+    // Universal fallbacks used by many crawlers
+    title: "Bipul Dubey – Software Engineer",
+    description:
+      "Portfolio of Bipul Dubey — showcasing full-stack skills, projects, certifications, and experience.",
+    image: `${BASE_URL}/site_icon.png`,
+
+    // Microsoft Teams, Outlook preview
+    "msapplication-TileImage": "/site_icon.png",
+    "msapplication-TileColor": "#0E1217",
+
+    // Google Chat fallback
+    "application-name": "Bipul Dubey Portfolio",
+
+    // Telegram link preview
+    "telegram:channel": "true",
+
+    // Discord / Slack prefer secure URLs
+    "og:image:secure_url": `${BASE_URL}/site_icon.png`,
+
+    // iMessage / iOS devices
+    "apple-mobile-web-app-title": "Bipul Dubey",
+    "apple-mobile-web-app-capable": "yes",
+
+    // Pinterest / Snapchat fallback
+    "image:src": `${BASE_URL}/site_icon.png`,
+  },
 };
 
 export default function SiteLayout({
