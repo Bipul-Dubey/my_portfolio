@@ -38,7 +38,7 @@ export function getFormattedExperience(
   if (years === 0 && months === 0) return "just started";
   if (years === 0) return `${months} month${months > 1 ? "s" : ""}`;
   if (months === 0) return `${years}+ year${years > 1 ? "s" : ""}`;
-  return `${years}+ year${years > 1 ? "s" : ""} ${months} month${
+  return `${years} year${years > 1 ? "s" : ""} ${months} month${
     months > 1 ? "s" : ""
   }`;
 }

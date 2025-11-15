@@ -1,38 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const educationHistory = [
   {
-    institution: "Stanford University",
-    degree: "Bachelor of Science in Computer Science",
-    years: "2014 - 2018",
-    details: "Graduated with Honors, focused on AI and algorithms.",
-  },
-  {
-    institution: "MIT",
-    degree: "Master of Science in EECS",
-    years: "2018 - 2020",
-    details: "Specialized in Machine Learning and Distributed Systems.",
-  },
-  {
-    institution: "Harvard University",
-    degree: "Professional Certificate in Data Science",
-    years: "2021",
+    institution: "Divine Public School, Gorakhpur",
+    degree: "Senior Secondary (12th)",
     details:
-      "Completed an intensive data science program with real-world projects.",
+      "Completed 12th in Science stream with Mathematics and Informatics Practices.",
+    logo: "/education/divine_public_school.jpeg",
   },
   {
-    institution: "NPTEL",
-    degree: "Online Course: Deep Learning",
-    years: "2022",
-    details: "Covered advanced neural network techniques.",
+    institution: "Deen Dayal Upadhyay Gorakhpur University (DDU)",
+    degree: "Bachelor of Science (B.Sc.)",
+    details:
+      "Completed B.Sc. with specialization in Mathematics and Computer Science.",
+    logo: "/education/ddug.png",
   },
   {
-    institution: "NPTEL",
-    degree: "Online Course: Deep Learning",
-    years: "2022",
-    details: "Covered advanced neural network techniques.",
+    institution: "Chandigarh University",
+    degree: "Master of Computer Applications (MCA)",
+    details:
+      "Completed MCA with focus on programming, software engineering, and computer applications.",
+    logo: "/education/cu.png",
   },
 ];
 
@@ -62,15 +53,30 @@ export default function EducationTimeline() {
           >
             {/* Card */}
             <div className="relative z-10 bg-card/80 backdrop-blur-md border border-border/40 shadow-md hover:shadow-xl hover:border-primary/40 transition-all duration-300 rounded-2xl px-6 py-6 w-full h-full group">
+              {/* Logo inside card */}
+              <div className="relative w-28 h-20 rounded-xl bg-white border border-border/30 shadow-sm flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                {edu.logo ? (
+                  <Image
+                    src={edu.logo}
+                    alt={edu.institution}
+                    fill
+                    className="object-contain p-1"
+                  />
+                ) : (
+                  <span className="text-lg font-semibold text-primary">
+                    {edu.institution.slice(0, 2).toUpperCase()}
+                  </span>
+                )}
+              </div>
+
               <h3 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
                 {edu.degree}
               </h3>
+
               <div className="text-primary font-medium mb-1">
                 {edu.institution}
               </div>
-              <div className="text-muted-foreground text-xs mb-2">
-                {edu.years}
-              </div>
+
               <p className="text-muted-foreground text-sm leading-snug">
                 {edu.details}
               </p>

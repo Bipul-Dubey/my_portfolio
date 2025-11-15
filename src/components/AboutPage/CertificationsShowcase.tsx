@@ -4,72 +4,63 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMotionValue, useTransform } from "framer-motion";
 
-// ✅ 1️⃣ Strictly typed platform names
-type Platform =
-  | "Amazon Web Services"
-  | "Microsoft Azure"
-  | "Udemy"
-  | "NPTEL"
-  | "Coursera";
+// Strictly typed platform names
+type Platform = "Amazon Web Services" | "Udemy" | "NPTEL";
 
-// ✅ 2️⃣ Colors for each platform
+// Colors for each platform
 const platformColors: Record<Platform, string> = {
-  "Amazon Web Services": "#FACC15", // yellow-400
-  "Microsoft Azure": "#2563EB", // blue-600
-  Udemy: "#22C55E", // green-500
-  NPTEL: "#FB923C", // orange-400
-  Coursera: "#4F46E5", // indigo-600
+  "Amazon Web Services": "#FF9900", // AWS Orange
+  Udemy: "#EC5252", // Udemy Red
+  NPTEL: "#E85C0D", // NPTEL Orange
 };
 
-// ✅ 3️⃣ Certification type
+const platformLogos: Record<Platform, string> = {
+  "Amazon Web Services":
+    "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+
+  Udemy: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg",
+
+  NPTEL:
+    "https://upload.wikimedia.org/wikipedia/en/thumb/1/1a/NPTEL_Logo.png/600px-NPTEL_Logo.png",
+};
+
+// Certification type
 interface Certification {
   platform: Platform;
-  logo: string;
   title: string;
   date: string;
   link?: string;
 }
 
-// ✅ 4️⃣ Sample Data
+// Sample Data
 const certifications: Certification[] = [
   {
     platform: "Amazon Web Services",
-    logo: "https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png",
-    title: "AWS Certified Solutions Architect – Associate",
-    date: "Jan 2024",
-    link: "#",
-  },
-  {
-    platform: "Microsoft Azure",
-    logo: "https://cdn.worldvectorlogo.com/logos/microsoft-azure-1.svg",
-    title: "Azure Fundamentals (AZ-900)",
-    date: "Dec 2023",
-    link: "#",
+    title: "AWS Certified Developer – Associate",
+    date: "2024",
+    link: "https://cp.certmetrics.com/amazon/en/public/verify/credential/LFN755210FEE1FK8",
   },
   {
     platform: "Udemy",
-    logo: "https://cdn.worldvectorlogo.com/logos/udemy-2.svg",
-    title: "The Complete Node.js Developer Course",
-    date: "Sep 2023",
-    link: "#",
+    title: "The Complete JavaScript Course",
+    date: "2023",
+    link: "https://www.udemy.com/certificate/UC-21c61d15-09f3-483d-92d8-6a16c972ddee/",
   },
   {
     platform: "NPTEL",
-    logo: "https://nptel.ac.in/assets/images/logo.png",
     title: "AI: Search Methods for Problem Solving",
-    date: "May 2023",
-    link: "#",
+    date: "2023",
+    link: "https://www.kindpng.com/picc/m/152-1520962_nptel-logo-hd-png-download.png",
   },
   {
-    platform: "Coursera",
-    logo: "https://logos-download.com/wp-content/uploads/2016/06/Coursera_logo_wordmark.png",
-    title: "Machine Learning by Stanford University",
-    date: "Apr 2022",
-    link: "#",
+    platform: "Udemy",
+    title: "100 Days of Code: The Complete Python Pro Bootcamp",
+    date: "2022",
+    link: "https://www.udemy.com/certificate/UC-bff23248-057c-4052-81f0-4ecc5a0214f5/",
   },
 ];
 
-// ✅ 5️⃣ Single Certification Card component
+// Single Certification Card component
 function CertificationCard({ cert }: { cert: Certification }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -89,6 +80,8 @@ function CertificationCard({ cert }: { cert: Certification }) {
     x.set(0);
     y.set(0);
   };
+
+  const logo = platformLogos[cert.platform];
 
   return (
     <motion.article
@@ -116,9 +109,9 @@ function CertificationCard({ cert }: { cert: Certification }) {
         style={{ boxShadow: `0 2px 10px ${color}25` }}
       >
         <Image
-          src={cert.logo}
+          src={logo}
           alt={cert.platform}
-          loader={() => cert.logo}
+          loader={() => logo}
           width={48}
           height={48}
           className="object-contain w-12 h-12"
@@ -159,7 +152,7 @@ function CertificationCard({ cert }: { cert: Certification }) {
   );
 }
 
-// ✅ 6️⃣ Main Grid component
+// Main Grid component
 export default function CertificationsGrid() {
   return (
     <section className="py-12 px-6">

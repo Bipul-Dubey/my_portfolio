@@ -1,14 +1,13 @@
 "use client";
 
-import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ResumeButton } from "../common/ResumeButton";
-import { getExperience } from "@/lib/utils";
+import { getFormattedExperience } from "@/lib/utils";
 
-// ✅ Typewriter animation (unchanged)
 const Typewriter = ({ text }: { text: string }) => {
   const [displayed, setDisplayed] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
@@ -44,91 +43,75 @@ const Typewriter = ({ text }: { text: string }) => {
 };
 
 const Introduction = () => {
-  const { years: experienceYears, months: experienceMonths } = getExperience();
-
-  const contactLinks = [
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/bipul-dubey-34ab8b225",
-      text: "linkedin.com/in/bipul-dubey-34ab8b225",
-    },
-    {
-      icon: Github,
-      href: "https://github.com/Bipul-Dubey",
-      text: "github.com/Bipul-Dubey",
-    },
-    {
-      icon: Mail,
-      href: "mailto:bipuldubeyofficial@gmail.com",
-      text: "bipuldubeyofficial@gmail.com",
-    },
-  ];
-
   return (
     <section className="w-full py-8">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_2.15fr] gap-8 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_2.15fr] gap-8 items-stretch">
         {/* LEFT CARD */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="group relative flex min-w-96 flex-col h-fit justify-between bg-linear-to-b from-background/70 to-background/90 rounded-3xl shadow-lg overflow-hidden backdrop-blur-md"
+          className="group relative flex sm:w-full min-w-80 lg:min-w-96 flex-col h-fit justify-between bg-linear-to-b from-background/70 to-background/90 rounded-3xl shadow-lg overflow-hidden backdrop-blur-md"
         >
           <div className="absolute inset-0 rounded-3xl bg-linear-to-tr from-primary/15 via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none" />
 
           {/* Profile Image */}
-          <div className="relative w-full flex items-center justify-center py-8 bg-muted/10">
+          <div className="relative w-full flex items-center justify-center py-8 bg-black/95 transition-transform duration-700 group-hover:scale-[1.03]">
+            {" "}
             <div className="w-36 h-36 rounded-full border-4 border-primary/20 overflow-hidden shadow-md mb-7">
+              {" "}
               <Image
                 src="/my_profile.png"
                 alt="Bipul Dubey"
                 fill
-                className="object-contain sm:object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, 200px"
                 priority
-              />
-            </div>
+              />{" "}
+            </div>{" "}
           </div>
 
           {/* Info Section */}
           <div className="px-4 py-3 flex flex-col flex-1">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+            <div
+              className="
+                flex flex-col items-start justify-start 
+                gap-x-6 gap-y-2
+                text-left text-base sm:text-lg
+              "
+            >
+              {/* Name */}
+              <h2 className="text-[28px] sm:text-3xl font-bold tracking-tight text-foreground">
                 Bipul Dubey
               </h2>
-              <p className="text-primary font-medium mt-1">Software Engineer</p>
-              <p className="text-muted-foreground text-sm mt-1">
-                {experienceYears}+ Years {experienceMonths} Months Experience
+
+              {/* Role */}
+              <p className="text-primary font-semibold text-[22px]">
+                Software Engineer
+              </p>
+
+              {/* Experience */}
+              <p className="text-muted-foreground flex items-center gap-1">
+                <span className="font-medium text-xl text-foreground/90">
+                  {getFormattedExperience()}
+                </span>{" "}
+                Experience
+              </p>
+
+              {/* Location */}
+              <p className="text-muted-foreground flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-primary shrink-0" />
+                <span>Gorakhpur, Uttar Pradesh</span>
               </p>
             </div>
 
-            {/* Contact Links */}
-            <div className="mt-6 space-y-2">
-              {contactLinks.map(({ icon: Icon, href, text }, i) => (
-                <Link
-                  key={i}
-                  href={href}
-                  target="_blank"
-                  className="flex items-center gap-3 rounded-xl px-4 py-2 bg-background/60 hover:bg-primary/10 border border-border/40 shadow hover:shadow transition-all duration-200"
-                >
-                  <div className="flex items-center justify-center size-8 rounded-full bg-primary/10 group-hover:bg-primary/30 transition">
-                    <Icon className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="text-sm text-foreground group-hover:text-primary transition-colors truncate">
-                    {text}
-                  </span>
-                </Link>
-              ))}
-            </div>
-
-            {/* ✅ Contact Me Button */}
+            {/* ✅ Contact Me + Resume */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-start gap-3 sm:gap-4 w-full"
             >
-              {/* Contact Button */}
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-white px-5 py-2.5 font-medium shadow-md hover:shadow-lg transition-all duration-300 w-full sm:flex-1"
@@ -137,7 +120,6 @@ const Introduction = () => {
                 Contact Me
               </Link>
 
-              {/* Resume Button */}
               <ResumeButton className="w-full sm:flex-1" />
             </motion.div>
           </div>
@@ -148,61 +130,58 @@ const Introduction = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative bg-linear-to-b from-background/95 to-background border border-border/40 rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 backdrop-blur-md flex flex-col justify-between p-6 sm:p-10"
+          className="relative bg-linear-to-b from-background/95 to-background border border-border/40 rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6"
         >
-          {/* Glow */}
           <div className="absolute inset-0 rounded-3xl bg-linear-to-tr from-primary/8 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
           <div>
             <Typewriter text="About Me" />
 
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              I’m a <strong>Full Stack Software Engineer</strong> with over{" "}
-              {experienceYears}+ years of hands-on experience crafting scalable,
-              user-focused web applications. I specialize in{" "}
+              Hi, I’m <strong>Bipul Dubey</strong> from{" "}
+              <strong>Gorakhpur, Uttar Pradesh</strong>. I hold a{" "}
+              <strong>Master of Computer Applications (MCA)</strong> from{" "}
+              <strong>Chandigarh University</strong>, and I’m passionate about
+              building modern, scalable, and impactful digital experiences.
+            </p>
+
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
+              As a <strong>Full Stack Software Engineer</strong> with{" "}
+              {getFormattedExperience()} of experience, I specialize in{" "}
               <strong>
                 React, Next.js, TypeScript, Node.js, Express.js, and Golang
+              </strong>
+              . I focus on crafting clean, high-performing systems that balance
+              usability, scalability, and speed — from intuitive UIs to
+              optimized backend APIs.
+            </p>
+
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
+              I’ve worked with startups and organizations to design full-stack
+              solutions that turn complex business needs into efficient,
+              maintainable products. My expertise spans{" "}
+              <strong>
+                SaaS platforms, AI-driven systems, REST & GraphQL APIs, and
+                real-time apps (WebSockets, SSE)
               </strong>{" "}
-              — building systems that balance clean architecture, speed, and
-              usability.
-            </p>
-
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
-              Over the years, I’ve worked with startups and organizations to
-              design and deliver full-stack solutions — from responsive
-              frontends to high-performance backend APIs. I’m passionate about
-              translating business needs into efficient, maintainable code and
-              ensuring seamless integration between frontend and backend
-              systems.
-            </p>
-
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
-              My expertise includes{" "}
+              with strong foundations in{" "}
               <strong>
-                RAG-based AI systems, SaaS platforms, RESTful & GraphQL APIs,
-                and real-time architectures (WebSockets, SSE)
+                PostgreSQL, MongoDB, Docker, and both monorepo and microservice
+                architectures
               </strong>
-              . I also have strong experience with{" "}
+              .
+            </p>
+
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
+              As a <strong>freelance developer</strong>, I build{" "}
               <strong>
-                PostgreSQL, MongoDB, Docker, and microservice architectures
+                complete web applications and backend APIs tailored to business
+                requirements
               </strong>
-              , enabling me to deliver robust, production-grade systems.
-            </p>
-
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
-              As a <strong>freelance developer</strong>, I collaborate with
-              businesses and founders to build custom web platforms — whether
-              it’s an MVP, automation system, or a long-term SaaS product. My
-              goal is to create solutions that are technically solid, visually
-              refined, and scalable as your product grows.
-            </p>
-
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mt-4">
-              I’m currently focused on building{" "}
-              <strong>AI-powered, data-driven platforms</strong> that combine
-              intelligent backend logic with exceptional UI experiences. I’m
-              open to freelance projects and technical partnerships that
-              challenge creativity and innovation.
+              — from static or dynamic sites to automation tools, AI-based
+              systems, and analytics dashboards. My goal is to deliver{" "}
+              <strong>reliable, efficient, and user-focused solutions</strong>{" "}
+              that help businesses grow and innovate.
             </p>
           </div>
 

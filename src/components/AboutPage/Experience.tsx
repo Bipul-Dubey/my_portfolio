@@ -1,32 +1,79 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import Image from "next/image";
+import { CompanyLogo } from "./CompanyLogo";
 
-const experiences = [
-  {
-    role: "Senior Software Engineer",
-    company: "TechNova Inc.",
-    date: "2023 – Present",
-    description:
-      "Led microservices development and mentored team in cloud technologies. Championed automation for higher delivery speed.",
-    image: "https://source.unsplash.com/64x64/?tech,avatar,blue",
-  },
-  {
-    role: "Full Stack Developer",
-    company: "Saga Labs",
-    date: "2020 – 2023",
-    description:
-      "Architected modular webapps and built RESTful APIs for legal platforms. Enhanced developer workflows with CI/CD tools.",
-    image: "https://source.unsplash.com/64x64/?tech,avatar,green",
-  },
+type ExperienceDescription =
+  | string
+  | string[]
+  | React.ReactNode
+  | React.ReactNode[];
+
+interface ExperienceItem {
+  role: string;
+  company: string;
+  date: string;
+  description: ExperienceDescription;
+  image: string;
+  logoTitle: string;
+}
+
+const experiences: ExperienceItem[] = [
   {
     role: "Software Engineer",
-    company: "Creative Bits",
-    date: "2018 – 2020",
-    description:
-      "Implemented document processing features and contributed to data/UX optimization for B2B platforms.",
-    image: "https://source.unsplash.com/64x64/?tech,avatar,pink",
+    company: "Jupitice Justice Technologies Private Limited",
+    date: "Sep 2025 – Present",
+    description: (
+      <>
+        Leading development of scalable <strong>REST APIs</strong> using{" "}
+        <strong>Express.js</strong> and <strong>Node.js</strong> to modernize
+        case-management workflows. Delivered a high-performance, SEO-optimized{" "}
+        <strong>Next.js</strong> website that improved visibility and user
+        engagement. Enhanced overall application <strong>UI/UX</strong> by
+        improving responsiveness, optimizing layouts, and refining interactive
+        components.
+      </>
+    ),
+    image: "",
+    logoTitle: "Jupitice Justice Technologies",
+  },
+
+  {
+    role: "Software Engineer",
+    company: "Xenonstack Private Limited",
+    date: "Aug 2023 – Jul 2025",
+    description: (
+      <>
+        Built production-level web applications using <strong>React.js</strong>{" "}
+        and <strong>Next.js</strong>, integrating <strong>REST</strong>,{" "}
+        <strong>GraphQL</strong>, and{" "}
+        <strong>real-time APIs (WebSocket/SSE)</strong> to deliver seamless,
+        fast user experiences. Developed backend services using{" "}
+        <strong>Golang microservices</strong> and{" "}
+        <strong>Node.js/Express.js</strong>, improving application scalability,
+        performance, and reliability across multiple product lines.
+      </>
+    ),
+    image: "",
+    logoTitle: "Xenon Stack",
+  },
+
+  {
+    role: "Associate Software Engineer",
+    company: "Xenonstack Private Limited",
+    date: "Jan 2023 – Aug 2023",
+    description: (
+      <>
+        Developed flexible, reusable <strong>React.js UI components</strong> and
+        integrated them with backend <strong>REST APIs</strong> to deliver
+        smooth product experiences. Built backend routes, middleware, and data
+        flows using <strong>Golang</strong> and <strong>PostgreSQL</strong>,
+        improving system performance and enabling more reliable feature
+        deployments across the platform.
+      </>
+    ),
+    image: "",
+    logoTitle: "Xenon Stack",
   },
 ];
 
@@ -64,6 +111,7 @@ export default function ExperienceSection() {
             className="hidden md:block absolute left-7 top-0 bottom-0 w-1 bg-linear-to-b from-primary to-transparent rounded-full z-0 pointer-events-none"
           />
 
+          {/* Heading */}
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,6 +120,8 @@ export default function ExperienceSection() {
           >
             Experience
           </motion.h2>
+
+          {/* Timeline */}
           <motion.ul
             initial="hidden"
             whileInView="visible"
@@ -88,20 +138,15 @@ export default function ExperienceSection() {
                 animate="visible"
                 className="flex items-start gap-4 md:gap-8 relative"
               >
-                {/* Desktop marker with timeline */}
+                {/* Desktop marker */}
                 <div className="hidden md:flex flex-col items-center mr-2">
-                  <span className="w-16 h-16 rounded-xl bg-white shadow-lg border border-primary flex items-center justify-center">
-                    <Image
-                      src={exp.image}
-                      alt={exp.company}
-                      loader={() => exp.image}
-                      width={40}
-                      height={40}
-                      className="rounded-full object-cover"
-                      sizes="40px"
-                    />
-                  </span>
+                  <CompanyLogo
+                    image={exp.image}
+                    logoTitle={exp.logoTitle}
+                    size="md"
+                  />
                 </div>
+
                 {/* Card */}
                 <motion.div
                   whileHover={{
@@ -111,18 +156,15 @@ export default function ExperienceSection() {
                   className="flex-1 bg-card/60 border border-border/20 backdrop-blur-lg shadow p-7 rounded-2xl transition-all duration-300 hover:bg-card/80"
                 >
                   <div className="flex items-center mb-2">
-                    {/* Mobile shows image inside card */}
-                    <span className="block md:hidden w-10 h-10 mr-3 rounded-full overflow-hidden border border-primary shrink-0">
-                      <Image
-                        src={exp.image}
-                        alt={exp.company}
-                        loader={() => exp.image}
-                        width={40}
-                        height={40}
-                        className="w-full h-full object-cover"
-                        sizes="40px"
+                    {/* Mobile logo / initials */}
+                    <div className="md:hidden mr-3 shrink-0">
+                      <CompanyLogo
+                        image={exp.image}
+                        logoTitle={exp.logoTitle}
+                        size="sm"
                       />
-                    </span>
+                    </div>
+
                     <div>
                       <div className="font-semibold text-lg text-foreground">
                         {exp.role}
@@ -135,8 +177,18 @@ export default function ExperienceSection() {
                       {exp.date}
                     </span>
                   </div>
-                  <div className="text-muted-foreground leading-relaxed">
-                    {exp.description}
+                  <div className="text-muted-foreground leading-relaxed prose prose-invert max-w-none">
+                    {Array.isArray(exp.description) ? (
+                      <ul className="list-disc ml-6 space-y-2">
+                        {exp.description.map((item, idx) => (
+                          <li key={idx} className="leading-snug">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>{exp.description}</p>
+                    )}
                   </div>
                 </motion.div>
               </motion.li>

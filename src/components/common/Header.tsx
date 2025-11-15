@@ -75,8 +75,10 @@ function NavItem({
         <motion.path
           d={wavePath}
           fill="transparent"
-          stroke={isContact ? "#1d4ed8" : "var(--foreground, #111)"}
-          strokeWidth={isContact ? 3 : 2}
+          stroke={
+            isContact && !hasHovered ? "#1d4ed8" : "var(--foreground, #111)"
+          }
+          strokeWidth={isContact && !hasHovered ? 4 : 2}
           strokeLinecap="round"
           variants={pathVariants}
         />

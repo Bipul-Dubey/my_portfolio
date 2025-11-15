@@ -43,9 +43,7 @@ export default function Projects({ isPage = false }: ProjectsProps) {
         <SectionHeader
           title={`What I've Built`}
           description={
-            isPage
-              ? "Explore my professional, freelance, and personal projects — filter by tech, category, or search across them."
-              : "A glimpse of the projects I've crafted — from scalable backend systems to modern frontend experiences."
+            "A glimpse of the projects I've crafted — from scalable backend systems to modern frontend experiences."
           }
         />
 
