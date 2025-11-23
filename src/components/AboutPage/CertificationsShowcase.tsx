@@ -21,7 +21,7 @@ const platformLogos: Record<Platform, string> = {
   Udemy: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg",
 
   NPTEL:
-    "https://upload.wikimedia.org/wikipedia/en/thumb/1/1a/NPTEL_Logo.png/600px-NPTEL_Logo.png",
+    "https://www.kindpng.com/picc/m/152-1520962_nptel-logo-hd-png-download.png",
 };
 
 // Certification type
@@ -50,7 +50,7 @@ const certifications: Certification[] = [
     platform: "NPTEL",
     title: "AI: Search Methods for Problem Solving",
     date: "2023",
-    link: "https://www.kindpng.com/picc/m/152-1520962_nptel-logo-hd-png-download.png",
+    link: "https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL22CS08S1329080002221256",
   },
   {
     platform: "Udemy",

@@ -3,11 +3,12 @@
 import { technologies } from "@/constants/technologies";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { HelpCircle } from "lucide-react";
 
 interface TechnologyIconsProps {
-  list: string[]; // list of technology keys
-  detailed?: boolean; // show with names (for modal view)
-  limit?: number; // limit icons (for compact preview)
+  list: string[];
+  detailed?: boolean;
+  limit?: number;
   className?: string;
 }
 
@@ -45,6 +46,7 @@ export function TechnologyIcons({
               !detailed && "opacity-80"
             )}
           >
+            {/* ICON / SVG / PLACEHOLDER */}
             {Icon ? (
               <Icon className={iconClasses} title={tech.name} />
             ) : tech.svg ? (
@@ -56,7 +58,11 @@ export function TechnologyIcons({
                 className="object-contain opacity-90"
                 title={tech.name}
               />
-            ) : null}
+            ) : (
+              <HelpCircle className="w-5 h-5 text-muted-foreground">
+                <title>{tech.name}</title>
+              </HelpCircle>
+            )}
 
             {detailed && <span>{tech.name}</span>}
           </div>

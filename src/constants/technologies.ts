@@ -93,6 +93,22 @@ export const technologies: Record<string, TTechnology> = {
     icon: SiAwsamplify,
     color: "text-yellow-400",
   },
+  Vercel: {
+    name: "Vercel",
+    svg: "/icons/vercel.svg",
+  },
+  FramerMotion: {
+    name: "Framer Motion",
+  },
+  Shadcn: {
+    name: "Shadcn",
+  },
+  Zustand: {
+    name: "Zustand",
+  },
+  Recharts: {
+    name: "Recharts",
+  },
 };
 
 export type TechnologyKey = keyof typeof technologies;

@@ -2,13 +2,14 @@
 
 import BeamsBackground from "../../ui/beams-background";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Handshake } from "lucide-react";
 import { OrbitingIcons } from "./OrbitIcons";
 import Link from "next/link";
 import { AnimatedShinyText } from "@/components/ui/shiny-badge";
 import { cn } from "@/lib/utils";
 import { MorphingText } from "@/components/ui/morphing-text";
 import { ResumeButton } from "@/components/common/ResumeButton";
+import { ContactLinks } from "@/constants/site_constant";
 
 const HeroSection = () => {
   return (
@@ -107,6 +108,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-7 py-3 rounded-xl font-semibold border border-border hover:bg-secondary/80 transition-all hover:shadow-lg hover:scale-105"
             >
               Get In Touch
+              <Handshake className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
@@ -117,30 +119,25 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="flex flex-wrap justify-center lg:justify-start items-center gap-4 pt-4"
           >
-            <Link
-              href="https://github.com/Bipul-Dubey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110"
-            >
-              <Github className="w-4 h-4" />
-            </Link>
-            <Link
-              href="https://linkedin.com/in/bipul-dubey-34ab8b225"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110"
-            >
-              <Linkedin className="w-4 h-4" />
-            </Link>
-            <Link
-              href="mailto:bipuldubeyofficial@gmail.com"
-              className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110"
-            >
-              <Mail className="w-4 h-4" />
-            </Link>
+            {ContactLinks.map(({ href, icon: Icon, hover }, i) => (
+              <Link
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`
+        w-10 h-10 flex items-center justify-center rounded-lg 
+        bg-secondary border border-border
+        transition-all hover:scale-110 
+        ${hover}  
+      `}
+              >
+                <Icon className="w-4 h-4" />
+              </Link>
+            ))}
+
             <div className="w-px h-6 bg-border mx-2" />
-            <ResumeButton />
+            <ResumeButton text="Resume" />
           </motion.div>
         </div>
 

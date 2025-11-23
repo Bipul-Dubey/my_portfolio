@@ -37,7 +37,7 @@ export default function Projects({ isPage = false }: ProjectsProps) {
         id="projects"
         className={cn(
           "container mx-auto px-4 py-16 lg:py-28",
-          isPage ? "pt-28" : ""
+          isPage ? "pt-28 pb-10" : ""
         )}
       >
         <SectionHeader

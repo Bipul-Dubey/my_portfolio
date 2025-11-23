@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
+import { ContactLinks } from "@/constants/site_constant";
 
 const Footer = () => {
   return (
@@ -20,32 +20,19 @@ const Footer = () => {
         </Link>
 
         {/* Center Section — Links */}
-        <div className="flex items-center gap-6">
-          <Link
-            href="mailto:bipuldubey.dev@gmail.com"
-            className="flex items-center gap-2 text-lg text-muted-foreground hover:text-primary transition"
-          >
-            <Mail className="w-4 h-4" />
-            Email
-          </Link>
-
-          <Link
-            href="https://linkedin.com/in/bipuldubey"
-            target="_blank"
-            className="flex items-center gap-2 text-lg text-muted-foreground hover:text-primary transition"
-          >
-            <Linkedin className="w-4 h-4" />
-            LinkedIn
-          </Link>
-
-          <Link
-            href="https://github.com/bipuldubey"
-            target="_blank"
-            className="flex items-center gap-2 text-lg text-muted-foreground hover:text-primary transition"
-          >
-            <Github className="w-4 h-4" />
-            GitHub
-          </Link>
+        <div className="flex items-center justify-center gap-6 flex-wrap">
+          {ContactLinks.map(({ href, icon: Icon, label }) => (
+            <Link
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-lg text-muted-foreground hover:text-primary transition"
+            >
+              <Icon className="w-4 h-4" />
+              {label}
+            </Link>
+          ))}
         </div>
 
         {/* Right Section */}

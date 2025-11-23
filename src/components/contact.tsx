@@ -4,36 +4,12 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Globe } from "@/components/ui/globe";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "./ui/textarea";
-import { cn } from "@/lib/utils";
-
-const contactLinks = [
-  {
-    label: "Email",
-    href: "mailto:bipuldubey.tech@gmail.com",
-    icon: Mail,
-    gradient: "from-pink-500/20 via-rose-500/10 to-pink-500/5",
-    textColor: "text-pink-600 dark:text-pink-400",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/bipuldubey",
-    icon: Linkedin,
-    gradient: "from-blue-500/20 via-sky-500/10 to-blue-500/5",
-    textColor: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/Bipul-Dubey",
-    icon: Github,
-    gradient: "from-gray-500/20 via-gray-400/10 to-gray-500/5",
-    textColor: "text-gray-700 dark:text-gray-300",
-  },
-];
+import { ContactLinks } from "@/constants/site_constant";
 
 export default function ContactUs() {
   const formRef = useRef(null);
@@ -108,6 +84,7 @@ export default function ContactUs() {
                 >
                   <Button
                     type="submit"
+                    disabled
                     className="w-full flex items-center justify-center gap-2 text-base font-medium"
                   >
                     Send Message
@@ -136,73 +113,44 @@ export default function ContactUs() {
 
           {/* ✅ Contact Links Inside Container */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="border-t border-border/30  px-6 md:px-10 py-10
-             grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            transition={{ duration: 0.4 }}
+            className="border-t border-border/30 px-6 md:px-8 py-6"
           >
-            {contactLinks.map(
-              ({ label, href, icon: Icon, gradient, textColor }, i) => (
+            <div
+              className="
+      flex flex-wrap 
+      justify-center 
+      items-center 
+      gap-8
+    "
+            >
+              {ContactLinks.map(({ href, icon: Icon, gradient }, i) => (
                 <motion.a
-                  key={label}
+                  key={href}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + i * 0.1 }}
-                  className={cn(
-                    `group relative flex items-start gap-4 rounded-2xl border border-border/40 
-         bg-background/60 p-5 shadow-md backdrop-blur-md transition-all duration-300
-         hover:shadow-xl hover:border-primary/40`
-                  )}
+                  transition={{ delay: 0.15 + i * 0.08 }}
+                  className="cursor-pointer"
                 >
-                  {/* Icon */}
                   <div
-                    className={`relative flex h-12 w-12 shrink-0 items-center justify-center 
-        rounded-xl bg-linear-to-br ${gradient} text-white shadow-inner`}
+                    className={`
+            flex h-11 w-11 items-center justify-center 
+            rounded-2xl shadow-md hover:shadow-lg transition-all
+            bg-linear-to-br ${gradient}
+          `}
                   >
-                    <Icon className="w-6 h-6" />
-                    {/* Glow ring effect */}
-                    <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                    <Icon className="w-7 h-7 text-white drop-shadow-sm" />
                   </div>
-
-                  {/* Text content */}
-                  <div className="flex flex-col justify-center">
-                    <span
-                      className={cn(
-                        "font-semibold text-lg md:text-xl leading-tight",
-                        textColor
-                      )}
-                    >
-                      {label}
-                    </span>
-
-                    {label === "Email" && (
-                      <span className="text-muted-foreground text-sm mt-1">
-                        bipuldubey.tech@gmail.com
-                      </span>
-                    )}
-                    {label === "LinkedIn" && (
-                      <span className="text-muted-foreground text-sm mt-1">
-                        linkedin.com/in/bipuldubey
-                      </span>
-                    )}
-                    {label === "GitHub" && (
-                      <span className="text-muted-foreground text-sm mt-1">
-                        github.com/Bipul-Dubey
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Hover light overlay */}
-                  <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.a>
-              )
-            )}
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

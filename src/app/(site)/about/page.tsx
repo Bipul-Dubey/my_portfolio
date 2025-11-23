@@ -14,8 +14,8 @@ const AboutPage = () => {
         <Experience />
         <CertificationsShowcase />
         <EducationHistory />
-        <ContactUs />
       </div>
+      <ContactUs />
     </section>
   );
 };
